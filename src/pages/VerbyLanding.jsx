@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { Trophy, Users, Zap, Brain, History, BookOpen, Star, Github, Globe, BarChart3, Target, Swords } from 'lucide-react';
@@ -27,9 +28,9 @@ const VerbyLanding = () => {
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 lg:gap-4 mb-4 lg:mb-6 animate-fade-in-blur [animation-delay:0.3s]">
-            <button className="bg-[#EB3514] hover:bg-[#EB3514]/90 text-white font-bold rounded-md h-12 px-6 flex items-center justify-center transition-all shadow-sm">
+            <Link to="/register" className="bg-[#EB3514] hover:bg-[#EB3514]/90 text-white font-bold rounded-md h-12 px-6 flex items-center justify-center transition-all shadow-sm">
               Start playing
-            </button>
+            </Link>
             {/* Changed bg-white to bg-[#F0EFEB] */}
             <button className="bg-[#F0EFEB] hover:bg-gray-200 text-[#333333] border border-[#DEDDDA] font-bold rounded-md h-12 px-6 flex items-center justify-center gap-3 transition-all shadow-sm">
                <img src="https://www.svgrepo.com/show/355037/google.svg" className="w-5 h-5" alt="Google" />
@@ -201,9 +202,9 @@ const VerbyLanding = () => {
           <section className="py-12 text-center border-t border-[#DEDDDA]">
             <p className="text-sm mb-2 text-[#333333] font-bold">Ready to master the verbs?</p>
             <p className="text-sm mb-8 text-gray-400">Join 5,000+ students learning the right way.</p>
-            <button className="bg-[#EB3514] text-white px-10 py-4 rounded-md font-bold text-sm hover:bg-[#EB3514]/90 transition-all shadow-sm">
+            <Link to="/register" className="bg-[#EB3514] text-white px-10 py-4 rounded-md font-bold text-sm hover:bg-[#EB3514]/90 transition-all shadow-sm">
                 Get started for free
-            </button>
+            </Link>
           </section>
 
         </div>
