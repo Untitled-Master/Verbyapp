@@ -37,7 +37,7 @@ const MainNavbar = () => {
         <div className="flex items-center gap-10">
           <Link to="/" className="font-bold text-xl tracking-tighter text-[#EB3514] font-sans italic">VERBY.</Link>
           <div className="hidden md:flex gap-6 text-xs font-medium text-gray-500 tracking-wide">
-             <a href="#" className="hover:text-[#1a1a1a] transition-colors">Play</a>
+             <Link to="/arena" className="hover:text-[#1a1a1a] transition-colors">Play</Link>
              <a href="#" className="hover:text-[#1a1a1a] transition-colors">Puzzles</a>
              <a href="#" className="hover:text-[#1a1a1a] transition-colors">Learn</a>
           </div>

@@ -5,6 +5,7 @@ import VerbyLanding from './pages/VerbyLanding';
 import Login from './pages/auth/Login';
 import Profile from './pages/profile/profile';
 import EditProfile from './pages/profile/EditProfile';
+import Arena from './pages/arena/Arena';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/profile/edit" element={<EditProfile />} />
+          <Route path="/arena" element={<Arena />} />
         </Routes>
       </Router>
     </AuthProvider>

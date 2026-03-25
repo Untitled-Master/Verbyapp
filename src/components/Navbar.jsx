@@ -47,8 +47,8 @@ const Navbar = () => {
 
         {/* Auth CTAs */}
         <div className="flex items-center gap-2">
-          <a href="#" className="hidden lg:block text-[#333333] px-3 py-1.5 rounded-lg transition-colors font-mono text-sm bg-white border border-gray-200 hover:border-gray-400">
-            Dashboard
+          <a href="/arena" className="hidden lg:block text-[#333333] px-3 py-1.5 rounded-lg transition-colors font-mono text-sm bg-white border border-gray-200 hover:border-gray-400">
+            Arena
           </a>
           <a href="#" className="bg-[#EB3514] hover:bg-[#EB3514]/90 text-white font-bold rounded-md transition-colors font-mono px-4 py-1.5 text-sm shadow-sm">
             Get started
