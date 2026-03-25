@@ -70,7 +70,7 @@ const Footer = () => {
           <div className="flex items-center gap-4 text-[10px] text-gray-400 uppercase tracking-widest font-bold">
             <p>© 2026 Verby</p>
             <span className="hidden md:inline text-gray-200">|</span>
-            <p>Made with ♡ in France</p>
+            <p>Made with ♡ by Ahmed</p>
           </div>
 
           <div className="flex gap-6 items-center">
