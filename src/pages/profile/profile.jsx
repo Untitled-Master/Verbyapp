@@ -9,7 +9,7 @@ import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend 
 } from 'recharts';
 import { 
-  Zap, Target, Globe, Calendar, Swords, AlertCircle, CalendarCheck, Pencil
+  Zap, Target, Globe, Calendar, Swords, Flame, Pencil
 } from 'lucide-react';
 
 const Profile = () => {
@@ -84,19 +84,18 @@ const Profile = () => {
     };
   }, [user]);
   const chartData = [
-    { name: 'Mar 01', blitz: 1700, duels: 1820, mastery: 1400 },
-    { name: 'Mar 05', blitz: 1740, duels: 1860, mastery: 1480 },
-    { name: 'Mar 10', blitz: 1780, duels: 1890, mastery: 1520 },
-    { name: 'Mar 15', blitz: 1800, duels: 1900, mastery: 1540 },
-    { name: 'Mar 20', blitz: 1817, duels: 1915, mastery: 1560 },
-    { name: 'Today', blitz: 1817, duels: 1923, mastery: 1568 },
+    { name: 'Mar 01', blitz: 1700, duels: 1820 },
+    { name: 'Mar 05', blitz: 1740, duels: 1860 },
+    { name: 'Mar 10', blitz: 1780, duels: 1890 },
+    { name: 'Mar 15', blitz: 1800, duels: 1900 },
+    { name: 'Mar 20', blitz: 1817, duels: 1915 },
+    { name: 'Today', blitz: 1817, duels: 1923 },
   ];
 
   const variants = [
     { id: 'blitz', name: 'Blitz', color: '#333333', icon: <Zap size={14}/> },
-    { id: 'duels', name: 'Duels', color: '#EB3514', icon: <Swords size={14}/> },
-    { id: 'mastery', name: 'Mastery', color: '#9CA3AF', icon: <AlertCircle size={14}/> },
-    { id: 'daily', name: 'Daily', color: '#6366F1', icon: <CalendarCheck size={14}/> },
+    { id: 'streak', name: 'Streak', color: '#EB3514', icon: <Flame size={14}/> },
+    { id: 'duels', name: 'Duels', color: '#C0C0C0', icon: <Swords size={14}/> },
   ];
 
   const getModeIcon = (mode) => {
@@ -115,10 +114,8 @@ const Profile = () => {
         return `Played Blitz - ${game.correct || 0}/${game.total || 0} correct`;
       case 'duels':
         return `Played Duels - ${game.won ? 'Won' : 'Lost'}`;
-      case 'mastery':
-        return `Played Mastery - ${game.correct || 0} mistakes reviewed`;
-      case 'daily':
-        return `Completed Daily Quest - ${game.completed ? 'Done' : 'Incomplete'}`;
+      case 'streak':
+        return `Played Streak - ${game.streak || 0} streak`;
       default:
         return `Played ${getModeName(game.mode)}`;
     }
@@ -132,27 +129,31 @@ const Profile = () => {
         
           {/* LEFT SIDEBAR - RATINGS ONLY */}
         <aside className="w-full lg:w-[280px] border-r border-[#DEDDDA] p-6 lg:p-8 bg-white">
-          <h3 className="text-[10px] font-semibold text-gray-400 uppercase tracking-widest mb-4">Ratings</h3>
+          <h3 className="text-[10px] font-semibold text-gray-400 uppercase tracking-widest mb-4">Stats</h3>
           <div className="flex flex-col gap-3">
-            {statsData && Object.entries(statsData).map(([key, data]) => (
-              <div key={key} className="flex items-center justify-between p-3 rounded-lg bg-[#F0EFEB]">
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: `${variants.find(v => v.id === key)?.color || '#9CA3AF'}15` }}>
-                    <span style={{ color: variants.find(v => v.id === key)?.color || '#9CA3AF' }}>
-                      {variants.find(v => v.id === key)?.icon || <Target size={14}/>}
-                    </span>
+            {statsData && Object.entries(statsData).map(([key, data]) => {
+              const variant = variants.find(v => v.id === key);
+              const isStreak = key === 'streak';
+              return (
+                <div key={key} className="flex items-center justify-between p-3 rounded-lg bg-[#F0EFEB]">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: `${variant?.color || '#9CA3AF'}15` }}>
+                      <span style={{ color: variant?.color || '#9CA3AF' }}>
+                        {variant?.icon || <Target size={14}/>}
+                      </span>
+                    </div>
+                    <div>
+                      <h4 className="text-xs font-semibold">{key.charAt(0).toUpperCase() + key.slice(1)}</h4>
+                      <p className="text-[10px] text-gray-400">{isStreak ? 'Best streak' : `${data.games || 0} games`}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="text-xs font-semibold">{key.charAt(0).toUpperCase() + key.slice(1)}</h4>
-                    <p className="text-[10px] text-gray-400">{data.games || 0} games</p>
+                  <div className="text-right">
+                    <div className="text-base font-bold">{isStreak ? (data.bestStreak || 0) : (data.rating || 1200)}</div>
+                    {!isStreak && <div className="text-[10px] text-gray-400">{data.rank ? `#${data.rank}` : 'Unranked'}</div>}
                   </div>
                 </div>
-                <div className="text-right">
-                  <div className="text-base font-bold">{data.rating || 1200}</div>
-                  <div className="text-[10px] text-gray-400">{data.rank ? `#${data.rank}` : 'Unranked'}</div>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </aside>
 
@@ -223,7 +224,6 @@ const Profile = () => {
                   <div className="flex gap-4 text-xs">
                     <span className="flex items-center gap-1.5"><span className="w-3 h-0.5 bg-[#333333]"/></span> Blitz
                     <span className="flex items-center gap-1.5"><span className="w-3 h-0.5 bg-[#EB3514]"/></span> Duels
-                    <span className="flex items-center gap-1.5"><span className="w-3 h-0.5 bg-gray-400"/></span> Mastery
                   </div>
                 </div>
                 <div className="h-56 w-full">
@@ -250,7 +250,6 @@ const Profile = () => {
                       <Legend iconType="circle" iconSize={8} wrapperStyle={{ paddingTop: '16px', fontSize: '11px' }}/>
                       <Line type="monotone" dataKey="blitz" stroke="#333333" strokeWidth={2} dot={{ r: 3 }} activeDot={{ r: 5 }} name="Blitz" />
                       <Line type="monotone" dataKey="duels" stroke="#EB3514" strokeWidth={2} dot={{ r: 3 }} activeDot={{ r: 5 }} name="Duels" />
-                      <Line type="monotone" dataKey="mastery" stroke="#9CA3AF" strokeWidth={2} dot={{ r: 3 }} activeDot={{ r: 5 }} name="Mastery" />
                     </LineChart>
                   </ResponsiveContainer>
                 </div>

@@ -4,7 +4,7 @@ import MainNavbar from '../../components/MainNavbar';
 import { ref, onValue, get } from 'firebase/database';
 import { database } from '../../lib/firebase';
 import { 
-  Zap, Swords, AlertCircle, CalendarCheck, 
+  Zap, Swords, Flame, 
   ArrowLeft, Globe, Calendar, Target 
 } from 'lucide-react';
 import { 
@@ -16,9 +16,8 @@ const SILVER_TROPHY_IMG = 'https://lichess1.org/assets/hashed/silver-cup-2.d820d
 
 const variants = [
   { id: 'blitz', name: 'Blitz', color: '#333333', icon: <Zap size={14}/> },
-  { id: 'duels', name: 'Duels', color: '#EB3514', icon: <Swords size={14}/> },
-  { id: 'mastery', name: 'Mastery', color: '#9CA3AF', icon: <AlertCircle size={14}/> },
-  { id: 'daily', name: 'Daily', color: '#6366F1', icon: <CalendarCheck size={14}/> },
+  { id: 'streak', name: 'Streak', color: '#EB3514', icon: <Flame size={14}/> },
+  { id: 'duels', name: 'Duels', color: '#C0C0C0', icon: <Swords size={14}/> },
 ];
 
 const PublicProfile = () => {
@@ -106,7 +105,7 @@ const PublicProfile = () => {
     switch (game.mode) {
       case 'blitz': return `Blitz - ${game.correct || 0}/${game.total || 0}`;
       case 'duels': return `Duels - ${game.won ? 'Won' : 'Lost'}`;
-      case 'mastery': return `Mastery - ${game.correct || 0} mistakes`;
+      case 'streak': return `Streak - ${game.streak || 0}`;
       default: return game.mode;
     }
   };
@@ -128,10 +127,11 @@ const PublicProfile = () => {
             <Link to="/" className="flex items-center gap-2 text-xs text-gray-400 hover:text-black mb-6 transition-colors">
               <ArrowLeft size={14} /> Back to Community
             </Link>
-            <h3 className="text-[10px] font-semibold text-gray-400 uppercase tracking-widest mb-4">Player Ratings</h3>
+            <h3 className="text-[10px] font-semibold text-gray-400 uppercase tracking-widest mb-4">Player Stats</h3>
             <div className="flex flex-col gap-3">
               {variants.map((variant) => {
-                const data = statsData?.[variant.id] || { rating: 1200, games: 0 };
+                const isStreak = variant.id === 'streak';
+                const data = statsData?.[variant.id] || (isStreak ? { bestStreak: 0 } : { rating: 1200, games: 0 });
                 const rank = ranks[variant.id];
                 return (
                   <div key={variant.id} className="flex items-center justify-between p-3 rounded-xl bg-[#F0EFEB]/50 border border-transparent hover:border-[#DEDDDA] transition-all">
@@ -141,12 +141,12 @@ const PublicProfile = () => {
                       </div>
                       <div>
                         <h4 className="text-xs font-semibold">{variant.name}</h4>
-                        <p className="text-[10px] text-gray-400">{data.games} games</p>
+                        <p className="text-[10px] text-gray-400">{isStreak ? 'Best streak' : `${data.games || 0} games`}</p>
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className="text-base font-bold">{data.rating}</div>
-                      {rank && <div className="text-[10px] text-[#EB3514] font-medium">#{rank}</div>}
+                      <div className="text-base font-bold">{isStreak ? (data.bestStreak || 0) : (data.rating || 1200)}</div>
+                      {!isStreak && rank && <div className="text-[10px] text-[#EB3514] font-medium">#{rank}</div>}
                     </div>
                   </div>
                 );
@@ -248,7 +248,6 @@ const PublicProfile = () => {
                       />
                       <Line type="monotone" dataKey="blitz" stroke="#333333" strokeWidth={2.5} dot={false} activeDot={{ r: 4 }} name="Blitz" />
                       <Line type="monotone" dataKey="duels" stroke="#EB3514" strokeWidth={2.5} dot={false} activeDot={{ r: 4 }} name="Duels" />
-                      <Line type="monotone" dataKey="mastery" stroke="#9CA3AF" strokeWidth={2.5} dot={false} activeDot={{ r: 4 }} name="Mastery" />
                     </LineChart>
                   </ResponsiveContainer>
                 </div>

@@ -4,7 +4,7 @@ import MainNavbar from '../../components/MainNavbar';
 import { useAuth } from '../../context/AuthContext';
 import { ref, onValue } from 'firebase/database';
 import { database } from '../../lib/firebase';
-import { Zap, Swords, AlertCircle, CalendarCheck } from 'lucide-react';
+import { Zap, Swords, Flame, CalendarCheck } from 'lucide-react';
 
 const scrollbarStyles = `
   .custom-scrollbar::-webkit-scrollbar {
@@ -38,11 +38,11 @@ const gameModes = [
     color: '#EB3514',
   },
   {
-    id: 'mastery',
-    name: 'Mistake Mastery',
-    description: 'Verby tracks every error. This mode intelligently cycles back to the verbs you find hardest.',
-    icon: <AlertCircle size={20} />,
-    color: '#9CA3AF',
+    id: 'streak',
+    name: 'Verby Streak',
+    description: 'How long can you go? Keep conjugating verbs until you make a mistake. One wrong answer ends it all.',
+    icon: <Flame size={20} />,
+    color: '#EB3514',
   },
   {
     id: 'daily',
@@ -116,9 +116,15 @@ const Arena = () => {
 
   const getGameStats = (modeId) => {
     if (!statsData || !statsData[modeId]) {
+      if (modeId === 'streak') {
+        return { bestStreak: 0 };
+      }
       return { games: 0, rating: 1200, wins: 0 };
     }
     const mode = statsData[modeId];
+    if (modeId === 'streak') {
+      return { bestStreak: mode.bestStreak || 0 };
+    }
     return {
       games: mode.games || 0,
       rating: mode.rating || 1200,
@@ -129,8 +135,6 @@ const Arena = () => {
   const getModeInfo = (modeId) => {
     return gameModes.find(m => m.id === modeId) || {};
   };
-
-  const dailyStreak = statsData?.daily?.streak || 0;
 
   return (
     <div className="min-h-screen font-mono bg-[#F0EFEB] text-[#333333]">
@@ -157,10 +161,13 @@ const Arena = () => {
             </div>
 
             <div className="mb-4">
-              <h3 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">Ratings</h3>
+              <h3 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">Stats</h3>
               <div className="space-y-2">
                 {gameModes.map((mode) => {
-                  const { rating } = getGameStats(mode.id);
+                  const stats = getGameStats(mode.id);
+                  const isStreak = mode.id === 'streak';
+                  const value = isStreak ? stats.bestStreak : stats.rating;
+                  const label = isStreak ? 'streak' : 'ELO';
                   return (
                     <Link
                       key={mode.id}
@@ -171,7 +178,9 @@ const Arena = () => {
                         <span style={{ color: mode.color }}>{mode.icon}</span>
                         <span className="text-xs text-gray-500">{mode.name}</span>
                       </div>
-                      <span className="text-sm font-bold" style={{ color: mode.color }}>{rating}</span>
+                      <span className="text-sm font-bold" style={{ color: mode.color }}>
+                        {value} <span className="text-[10px] font-normal text-gray-400">{label}</span>
+                      </span>
                     </Link>
                   );
                 })}
@@ -256,11 +265,10 @@ const Arena = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {gameModes.map((mode) => {
-              const { games, rating } = getGameStats(mode.id);
-              const isDaily = mode.id === 'daily';
-              const streak = isDaily ? dailyStreak : 0;
+              const stats = getGameStats(mode.id);
               const isBlitz = mode.id === 'blitz';
-              const isDisabled = !isBlitz;
+              const isStreak = mode.id === 'streak';
+              const isDisabled = !isBlitz && !isStreak;
 
               const cardContent = (
                 <div
@@ -280,11 +288,6 @@ const Arena = () => {
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between mb-1">
                         <h3 className="font-bold text-[#333333]">{mode.name}</h3>
-                        {isDaily && streak > 0 && (
-                          <span className="text-xs font-bold text-[#EB3514] uppercase tracking-wide">
-                            🔥 {streak} Day Streak
-                          </span>
-                        )}
                         {isDisabled && (
                           <span className="text-xs font-bold text-[#EB3514] uppercase tracking-wide">
                             Coming Soon
@@ -293,11 +296,17 @@ const Arena = () => {
                       </div>
                       <p className="text-xs text-gray-500 leading-relaxed mb-3">{mode.description}</p>
                       <div className="flex items-center justify-between">
-                        <span className="text-xs text-gray-400 uppercase tracking-wide">
-                          {formatNumber(games)} {isDaily ? 'days' : 'games'}
-                        </span>
+                        {isStreak ? (
+                          <span className="text-xs text-gray-400 uppercase tracking-wide">
+                            Best streak
+                          </span>
+                        ) : (
+                          <span className="text-xs text-gray-400 uppercase tracking-wide">
+                            {formatNumber(stats.games || 0)} games
+                          </span>
+                        )}
                         <span className="text-sm font-bold" style={{ color: mode.color }}>
-                          {rating} ELO
+                          {isStreak ? `${stats.bestStreak} 🔥` : `${stats.rating} ELO`}
                         </span>
                       </div>
                     </div>
@@ -305,7 +314,7 @@ const Arena = () => {
                 </div>
               );
 
-              return isBlitz ? (
+              return (isBlitz || isStreak) ? (
                 <Link key={mode.id} to={`/arena/${mode.id}`}>{cardContent}</Link>
               ) : (
                 <div key={mode.id}>{cardContent}</div>
