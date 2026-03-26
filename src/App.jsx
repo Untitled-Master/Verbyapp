@@ -15,6 +15,8 @@ import CommunityBlitz from './pages/community/blitz';
 import CommunityDuels from './pages/community/duels';
 import CommunityMastery from './pages/community/mastery';
 import CommunityDaily from './pages/community/daily';
+import Tools from './pages/tools/tools';
+import VerbSearch from './pages/tools/search';
 
 const ProtectedRoute = ({ children }) => {
   const { user, loading } = useAuth();
@@ -51,6 +53,8 @@ function App() {
           <Route path="/community/duels" element={<CommunityDuels />} />
           <Route path="/community/mastery" element={<CommunityMastery />} />
           <Route path="/community/daily" element={<CommunityDaily />} />
+          <Route path="/tools" element={<Tools />} />
+          <Route path="/tools/search" element={<VerbSearch />} />
         </Routes>
       </Router>
     </AuthProvider>
