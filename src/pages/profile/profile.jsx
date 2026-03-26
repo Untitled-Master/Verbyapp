@@ -42,10 +42,12 @@ const Profile = () => {
     const unsubHistory = onValue(historyRef, (snapshot) => {
       if (snapshot.exists()) {
         const history = snapshot.val();
-        const historyArray = Object.entries(history).map(([date, data]) => ({
-          name: date,
-          ...data,
-        }));
+        const historyArray = Object.entries(history)
+          .map(([date, data]) => ({
+            name: date,
+            ...data,
+          }))
+          .sort((a, b) => a.name.localeCompare(b.name));
         setRatingHistory(historyArray);
       }
     });

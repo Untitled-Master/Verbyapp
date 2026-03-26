@@ -75,7 +75,7 @@ export const AuthProvider = ({ children }) => {
           daily: { rating: 1200, games: 0, streak: 0, lastPlayed: 0 },
         },
         ratingHistory: {
-          Today: { blitz: 1200, duels: 1200, mastery: 1200 },
+          [new Date().toISOString().split('T')[0]]: { blitz: 1200, duels: 1200, mastery: 1200 },
         },
         settings: {
           theme: 'light',

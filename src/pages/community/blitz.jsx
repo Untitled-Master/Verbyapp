@@ -5,7 +5,8 @@ import { database } from '../../lib/firebase';
 import MainNavbar from '../../components/MainNavbar';
 import { Zap } from 'lucide-react';
 
-const TROPHY_IMG = 'https://lichess1.org/assets/hashed/gold-cup-2.e1e2ac3f.png';
+const GOLD_TROPHY_IMG = 'https://lichess1.org/assets/hashed/gold-cup-2.e1e2ac3f.png';
+const SILVER_TROPHY_IMG = 'https://lichess1.org/assets/hashed/silver-cup-2.d820d24e.png';
 
 const CommunityBlitz = () => {
   const [players, setPlayers] = useState([]);
@@ -93,7 +94,7 @@ const CommunityBlitz = () => {
               to={`/profile/${players[0].uid}`}
               className="px-5 py-3 bg-[#EB3514] text-white rounded-md flex items-center gap-3 hover:bg-[#EB3514]/90 transition-colors"
             >
-              <img src={TROPHY_IMG} alt="trophy" className="w-6 h-6 object-contain brightness-0 invert" />
+              <img src={GOLD_TROPHY_IMG} alt="trophy" className="w-6 h-6 object-contain brightness-0 invert" />
               <div>
                 <div className="text-xs text-white/80 uppercase tracking-wide">Leader</div>
                 <div className="text-sm font-bold">{players[0].displayName}</div>
@@ -127,7 +128,6 @@ const CommunityBlitz = () => {
 
               {currentPlayers.map((player) => {
                 const tier = getRankTier(player.position);
-                const isTop10 = player.position <= 10;
 
                 return (
                   <Link
@@ -136,8 +136,10 @@ const CommunityBlitz = () => {
                     className="grid grid-cols-12 gap-4 px-5 py-3 border-b border-[#DEDDDA]/30 last:border-0 bg-white hover:bg-[#F0EFEB] transition-colors"
                   >
                     <div className="col-span-1 flex items-center">
-                      {isTop10 ? (
-                        <img src={TROPHY_IMG} alt="trophy" className="w-5 h-5 object-contain" />
+                      {player.position === 1 ? (
+                        <img src={GOLD_TROPHY_IMG} alt="trophy" className="w-5 h-5 object-contain" />
+                      ) : player.position <= 10 ? (
+                        <img src={SILVER_TROPHY_IMG} alt="trophy" className="w-5 h-5 object-contain" />
                       ) : (
                         <span className="text-xs font-medium text-gray-400">{player.position}</span>
                       )}
