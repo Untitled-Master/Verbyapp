@@ -11,6 +11,9 @@ import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer 
 } from 'recharts';
 
+const GOLD_TROPHY_IMG = 'https://lichess1.org/assets/hashed/gold-cup-2.e1e2ac3f.png';
+const SILVER_TROPHY_IMG = 'https://lichess1.org/assets/hashed/silver-cup-2.d820d24e.png';
+
 const variants = [
   { id: 'blitz', name: 'Blitz', color: '#333333', icon: <Zap size={14}/> },
   { id: 'duels', name: 'Duels', color: '#EB3514', icon: <Swords size={14}/> },
@@ -155,12 +158,18 @@ const PublicProfile = () => {
             <div>
               <h3 className="text-[10px] font-semibold text-gray-400 uppercase tracking-widest mb-4">Achievements</h3>
               <div className="grid grid-cols-2 gap-2">
-                {top10Modes.map(mode => (
-                  <div key={mode.id} className="bg-yellow-50 border border-yellow-200 p-2 rounded-lg flex flex-col items-center text-center">
-                    <img src="https://lichess1.org/assets/hashed/gold-cup-2.e1e2ac3f.png" className="w-8 h-8 object-contain mb-1" alt="trophy" />
-                    <span className="text-[9px] font-bold text-yellow-700 uppercase">Top 10 {mode.name}</span>
-                  </div>
-                ))}
+                {top10Modes.map(mode => {
+                  const rank = ranks[mode.id];
+                  const isGold = rank === 1;
+                  return (
+                    <div key={mode.id} className={`${isGold ? 'bg-yellow-50 border-yellow-200' : 'bg-gray-50 border-gray-200'} border p-2 rounded-lg flex flex-col items-center text-center`}>
+                      <img src={isGold ? GOLD_TROPHY_IMG : SILVER_TROPHY_IMG} className="w-8 h-8 object-contain mb-1" alt="trophy" />
+                      <span className={`text-[9px] font-bold uppercase ${isGold ? 'text-yellow-700' : 'text-gray-600'}`}>
+                        {isGold ? '#1 ' : `Top ${rank} `}{mode.name}
+                      </span>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           )}
