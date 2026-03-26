@@ -241,12 +241,14 @@ const VerbyStreak = () => {
     try {
       const statsRef = ref(database, `users/${user.uid}/stats/streak`);
       const snapshot = await get(statsRef);
-      const currentBest = snapshot.exists() ? (snapshot.val().bestStreak || 0) : 0;
+      const currentData = snapshot.exists() ? snapshot.val() : {};
+      const currentBest = currentData.bestStreak || 0;
       
       const updates = {
         [`users/${user.uid}/stats/streak`]: {
           bestStreak: Math.max(currentBest, finalStreak),
           lastStreak: finalStreak,
+          games: (currentData.games || 0) + 1,
         },
       };
       

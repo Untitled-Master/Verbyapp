@@ -17,6 +17,7 @@ import CommunityMastery from './pages/community/mastery';
 import CommunityDaily from './pages/community/daily';
 import Tools from './pages/tools/tools';
 import VerbSearch from './pages/tools/search';
+import Admin from './pages/admin/admin';
 
 const ProtectedRoute = ({ children }) => {
   const { user, loading } = useAuth();
@@ -55,6 +56,7 @@ function App() {
           <Route path="/community/daily" element={<CommunityDaily />} />
           <Route path="/tools" element={<Tools />} />
           <Route path="/tools/search" element={<VerbSearch />} />
+          <Route path="/admin" element={<ProtectedRoute><Admin /></ProtectedRoute>} />
         </Routes>
       </Router>
     </AuthProvider>

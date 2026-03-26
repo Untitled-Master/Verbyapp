@@ -2,7 +2,7 @@ import { useState, useRef, useEffect, useCallback } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 import { ref, get } from 'firebase/database';
-import { Share2, Settings, LogOut, LifeBuoy, User, ChevronDown, Search, X } from 'lucide-react';
+import { Settings, LogOut, LifeBuoy, User, ChevronDown, Search, X, Shield } from 'lucide-react';
 import { auth, database } from '../lib/firebase';
 import { useAuth } from '../context/AuthContext';
 
@@ -21,10 +21,22 @@ const MainNavbar = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
+  const [userRole, setUserRole] = useState(null);
   const dropdownRef = useRef(null);
   const communityRef = useRef(null);
   const searchRef = useRef(null);
   const searchTimeoutRef = useRef(null);
+
+  useEffect(() => {
+    if (user) {
+      const profileRef = ref(database, `users/${user.uid}/profile`);
+      get(profileRef).then((snapshot) => {
+        if (snapshot.exists()) {
+          setUserRole(snapshot.val().role || 'user');
+        }
+      });
+    }
+  }, [user]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -112,6 +124,7 @@ const MainNavbar = () => {
   const menuItems = [
     { icon: User, label: 'Profile', href: '/profile'}, 
     { icon: Settings, label: 'Settings', href: '/profile/edit' },
+    ...(userRole === 'admin' ? [{ icon: Shield, label: 'Admin', href: '/admin' }] : []),
     { icon: LifeBuoy, label: 'Support', href: '/support' },
     { icon: LogOut, label: 'Logout', onClick: handleLogout },
   ];
