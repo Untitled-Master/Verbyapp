@@ -165,7 +165,7 @@ const MainNavbar = () => {
                  </div>
                )}
              </div>
-             <a href="#" className="hover:text-[#1a1a1a] transition-colors">Tools</a>
+              <Link to="/tools" className="hover:text-[#1a1a1a] transition-colors">Tools</Link>
           </div>
         </div>
         
@@ -232,9 +232,6 @@ const MainNavbar = () => {
         </div>
         
         <div className="flex items-center gap-3">
-          <button className="p-2 text-gray-400 hover:text-gray-600 transition-colors">
-            <Share2 size={18} />
-          </button>
           <div className="relative" ref={dropdownRef}>
             <button 
               onClick={() => setIsOpen(!isOpen)}
