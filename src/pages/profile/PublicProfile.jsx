@@ -1,15 +1,14 @@
 import { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import { useParams, Link } from 'react-router-dom';
 import MainNavbar from '../../components/MainNavbar';
 import { ref, onValue, get } from 'firebase/database';
 import { database } from '../../lib/firebase';
 import { 
   Zap, Swords, AlertCircle, CalendarCheck, 
-  ArrowLeft, Medal, Globe, Calendar, Target 
+  ArrowLeft, Globe, Calendar, Target 
 } from 'lucide-react';
 import { 
-  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend 
+  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer 
 } from 'recharts';
 
 const variants = [
@@ -196,14 +195,14 @@ const PublicProfile = () => {
 
                 {profileData.bio && (
                   <p className="text-sm text-gray-600 leading-relaxed italic">
-                    "{profileData.bio}"
+                    &ldquo;{profileData.bio}&rdquo;
                   </p>
                 )}
 
                 <div className="space-y-3 pt-4 border-t border-[#F0EFEB]">
                   <div className="flex items-center gap-3 text-sm text-gray-600">
                     <Globe size={14} className="text-gray-400" />
-                    <span>{profileData.languages?.join(', ') || 'English'}</span>
+                    <span>{profileData.languages ? Object.values(profileData.languages).join(', ') : 'English'}</span>
                   </div>
                   {profileData.createdAt && (
                     <div className="flex items-center gap-3 text-sm text-gray-600">
