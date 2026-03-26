@@ -10,7 +10,7 @@ const gameModes = [
   { id: 'blitz', name: 'Blitz', href: '/community/blitz', color: '#333333' },
   { id: 'streak', name: 'Streak', href: '/community/streak', color: '#EB3514' },
   { id: 'duels', name: 'Duels', href: '/community/duels', color: '#C0C0C0' },
-  { id: 'daily', name: 'Daily', href: '/community/daily', color: '#6366F1' },
+  { id: 'zen', name: 'Zen', href: '/community/zen', color: '#6366F1' },
 ];
 
 const MainNavbar = () => {
@@ -165,8 +165,7 @@ const MainNavbar = () => {
                  </div>
                )}
              </div>
-             <a href="#" className="hover:text-[#1a1a1a] transition-colors">Puzzles</a>
-             <a href="#" className="hover:text-[#1a1a1a] transition-colors">Learn</a>
+             <a href="#" className="hover:text-[#1a1a1a] transition-colors">Tools</a>
           </div>
         </div>
         

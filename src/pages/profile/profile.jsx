@@ -9,7 +9,7 @@ import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend 
 } from 'recharts';
 import { 
-  Zap, Target, Globe, Calendar, Swords, Flame, Pencil
+  Zap, Target, Globe, Calendar, Swords, Flame, Pencil, Coffee
 } from 'lucide-react';
 
 const Profile = () => {
@@ -95,6 +95,7 @@ const Profile = () => {
   const variants = [
     { id: 'blitz', name: 'Blitz', color: '#333333', icon: <Zap size={14}/> },
     { id: 'streak', name: 'Streak', color: '#EB3514', icon: <Flame size={14}/> },
+    { id: 'zen', name: 'Zen', color: '#6366F1', icon: <Coffee size={14}/> },
     { id: 'duels', name: 'Duels', color: '#C0C0C0', icon: <Swords size={14}/> },
   ];
 
@@ -116,6 +117,8 @@ const Profile = () => {
         return `Played Duels - ${game.won ? 'Won' : 'Lost'}`;
       case 'streak':
         return `Played Streak - ${game.streak || 0} streak`;
+      case 'zen':
+        return `Played Zen - ${game.correct || 0}/${(game.correct || 0) + (game.wrong || 0)} correct`;
       default:
         return `Played ${getModeName(game.mode)}`;
     }
@@ -134,6 +137,11 @@ const Profile = () => {
             {statsData && Object.entries(statsData).map(([key, data]) => {
               const variant = variants.find(v => v.id === key);
               const isStreak = key === 'streak';
+              const isZen = key === 'zen';
+              const zenCorrect = data.correct || 0;
+              const zenWrong = data.wrong || 0;
+              const zenTotal = zenCorrect + zenWrong;
+              const zenRatio = zenTotal > 0 ? `${zenCorrect}/${zenTotal}` : '0/0';
               return (
                 <div key={key} className="flex items-center justify-between p-3 rounded-lg bg-[#F0EFEB]">
                   <div className="flex items-center gap-3">
@@ -144,12 +152,16 @@ const Profile = () => {
                     </div>
                     <div>
                       <h4 className="text-xs font-semibold">{key.charAt(0).toUpperCase() + key.slice(1)}</h4>
-                      <p className="text-[10px] text-gray-400">{isStreak ? 'Best streak' : `${data.games || 0} games`}</p>
+                      <p className="text-[10px] text-gray-400">
+                        {isStreak ? 'Best streak' : isZen ? `${zenCorrect} correct` : `${data.games || 0} games`}
+                      </p>
                     </div>
                   </div>
                   <div className="text-right">
-                    <div className="text-base font-bold">{isStreak ? (data.bestStreak || 0) : (data.rating || 1200)}</div>
-                    {!isStreak && <div className="text-[10px] text-gray-400">{data.rank ? `#${data.rank}` : 'Unranked'}</div>}
+                    <div className="text-base font-bold">
+                      {isStreak ? (data.bestStreak || 0) : isZen ? zenRatio : (data.rating || 1200)}
+                    </div>
+                    {!isStreak && !isZen && <div className="text-[10px] text-gray-400">{data.rank ? `#${data.rank}` : 'Unranked'}</div>}
                   </div>
                 </div>
               );
