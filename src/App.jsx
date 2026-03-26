@@ -9,6 +9,7 @@ import PublicProfile from './pages/profile/PublicProfile';
 import EditProfile from './pages/profile/EditProfile';
 import Arena from './pages/arena/Arena';
 import Blitz from './pages/arena/blitz';
+import VerbyStreak from './pages/arena/VerbyStreak';
 import CommunityBlitz from './pages/community/blitz';
 import CommunityDuels from './pages/community/duels';
 import CommunityMastery from './pages/community/mastery';
@@ -43,6 +44,7 @@ function App() {
           <Route path="/profile/edit" element={<ProtectedRoute><EditProfile /></ProtectedRoute>} />
           <Route path="/arena" element={<ProtectedRoute><Arena /></ProtectedRoute>} />
           <Route path="/arena/blitz" element={<ProtectedRoute><Blitz /></ProtectedRoute>} />
+          <Route path="/arena/streak" element={<ProtectedRoute><VerbyStreak /></ProtectedRoute>} />
           <Route path="/community/blitz" element={<CommunityBlitz />} />
           <Route path="/community/duels" element={<CommunityDuels />} />
           <Route path="/community/mastery" element={<CommunityMastery />} />

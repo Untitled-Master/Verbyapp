@@ -8,8 +8,8 @@ import { useAuth } from '../context/AuthContext';
 
 const gameModes = [
   { id: 'blitz', name: 'Blitz', href: '/community/blitz', color: '#333333' },
-  { id: 'duels', name: 'Duels', href: '/community/duels', color: '#EB3514' },
-  { id: 'mastery', name: 'Mastery', href: '/community/mastery', color: '#9CA3AF' },
+  { id: 'streak', name: 'Streak', href: '/community/streak', color: '#EB3514' },
+  { id: 'duels', name: 'Duels', href: '/community/duels', color: '#C0C0C0' },
   { id: 'daily', name: 'Daily', href: '/community/daily', color: '#6366F1' },
 ];
 
