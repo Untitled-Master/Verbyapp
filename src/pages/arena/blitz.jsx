@@ -8,6 +8,8 @@ import { toast } from 'sonner';
 import { Zap, ArrowLeft, Trophy, Target, Clock, X, Check } from 'lucide-react';
 import correctSound from '../../assets/correct.mp3';
 import wrongSound from '../../assets/wrong.mp3';
+import tenSecondsSound from '../../assets/10.mp3';
+import doneSound from '../../assets/done.mp3';
 
 const API_BASE = 'https://verby-back.vercel.app/api';
 const GAME_DURATION = 60;
@@ -16,12 +18,12 @@ const PERSONS = ['je', 'tu', 'il', 'nous', 'vous', 'ils'];
 
 const getPersonLabel = (key) => {
   const labels = {
-    je: "j&apos;/je",
+    je: 'je',
     tu: 'tu',
-    il: 'il/elle/on',
+    'il/elle/on': 'il/elle/on',
     nous: 'nous',
     vous: 'vous',
-    ils: 'ils/elles',
+    'ils/elles': 'ils/elles',
   };
   return labels[key] || key;
 };
@@ -101,6 +103,18 @@ const Blitz = () => {
     };
   }, [gameState]);
 
+  useEffect(() => {
+    if (gameState === 'playing' && timeLeft === 10) {
+      new Audio(tenSecondsSound).play().catch(() => {});
+    }
+  }, [timeLeft, gameState]);
+
+  useEffect(() => {
+    if (gameState === 'ended') {
+      new Audio(doneSound).play().catch(() => {});
+    }
+  }, [gameState]);
+
   const fetchRandomVerb = useCallback(async () => {
     if (fetchAbortRef.current) {
       fetchAbortRef.current.abort();
@@ -128,11 +142,31 @@ const Blitz = () => {
       if (conjugation.startsWith("j'") && person === 'je') {
         return { person: 'je', verbPart: conjugation.slice(2) };
       }
+      if (conjugation.startsWith("n'") && person === 'nous') {
+        return { person: 'nous', verbPart: conjugation.slice(2) };
+      }
+      if (conjugation.startsWith("l'") && person === 'ils') {
+        return { person: 'il/elle/on', verbPart: conjugation.slice(2) };
+      }
+      if (conjugation.startsWith("t'") && person === 'tu') {
+        return { person: 'tu', verbPart: conjugation.slice(2) };
+      }
+      if (conjugation.startsWith("s'") && person === 'vous') {
+        return { person: 'vous', verbPart: conjugation.slice(2) };
+      }
+      if (conjugation.startsWith("qu'")) {
+        if (conjugation.startsWith("qu'il") || conjugation.startsWith("qu'elle") || conjugation.startsWith("qu'on")) {
+          return { person: 'il/elle/on', verbPart: conjugation.slice(3) };
+        }
+      }
     }
     return null;
   };
 
   const generateOptions = useCallback((correctAnswer, allConjugations) => {
+    const correctExtracted = extractPersonFromConjugation(correctAnswer);
+    const correctPronoun = correctExtracted?.person || correctAnswer.split(' ')[0];
+    
     const incorrect = allConjugations
       .filter(c => c !== correctAnswer)
       .map(c => {
@@ -141,9 +175,13 @@ const Blitz = () => {
       });
     
     const shuffled = incorrect.sort(() => Math.random() - 0.5);
-    const wrongOptions = shuffled.slice(0, 3).map(verbPart => `${correctAnswer.split(' ')[0]} ${verbPart}`);
+    const wrongOptions = shuffled.slice(0, 3).map(verbPart => `${correctPronoun} ${verbPart}`);
     
-    const choices = [correctAnswer, ...wrongOptions];
+    const correctOption = correctExtracted 
+      ? `${correctPronoun} ${correctExtracted.verbPart}` 
+      : correctAnswer;
+    
+    const choices = [correctOption, ...wrongOptions];
     return choices.sort(() => Math.random() - 0.5);
   }, []);
 
@@ -166,7 +204,9 @@ const Blitz = () => {
     const extracted = extractPersonFromConjugation(correctConjugation);
     if (!extracted) return null;
     
-    const { person } = extracted;
+    const { person, verbPart } = extracted;
+    
+    const normalizedCorrectAnswer = `${person} ${verbPart}`;
     
     return {
       verb,
@@ -174,7 +214,7 @@ const Blitz = () => {
       tense: randomTense,
       person,
       personLabel: getPersonLabel(person),
-      correctAnswer: correctConjugation,
+      correctAnswer: normalizedCorrectAnswer,
       options: generateOptions(correctConjugation, conjugations),
     };
   }, [generateOptions]);
@@ -537,7 +577,7 @@ const Blitz = () => {
             )}
           </div>
           
-          <div className={`px-3 py-1.5 rounded font-bold text-sm ${
+          <div className={`px-4 py-2 rounded-lg font-bold text-2xl ${
             timeLeft <= 10 ? 'bg-red-500 text-white' : 'bg-[#333333] text-white'
           }`}>
             {timeLeft}s
@@ -548,7 +588,7 @@ const Blitz = () => {
           <div className="text-center py-20 text-sm text-gray-400">Loading...</div>
         ) : currentQuestion ? (
           <div>
-            <div className="text-center mb-6">
+            <div className="text-center mb-8">
               <div className="text-[10px] text-gray-400 uppercase tracking-widest mb-2 font-bold">
                 {currentQuestion.mode} · {currentQuestion.tense}
               </div>
@@ -560,7 +600,7 @@ const Blitz = () => {
               </div>
             </div>
             
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-2 gap-3">
               {options.map((option, index) => {
                 const isSelected = selectedAnswer === option;
                 const isCorrect = option === currentQuestion.correctAnswer;
@@ -592,7 +632,7 @@ const Blitz = () => {
               })}
             </div>
             
-            <div className="mt-4 text-center text-xs text-gray-400">
+            <div className="mt-6 text-center text-xs text-gray-400">
               {totalAnswered} · {correctAnswers} correct
             </div>
           </div>
