@@ -4,7 +4,7 @@ import MainNavbar from '../../components/MainNavbar';
 import { useAuth } from '../../context/AuthContext';
 import { ref, onValue } from 'firebase/database';
 import { database } from '../../lib/firebase';
-import { Zap, Swords, Flame, CalendarCheck } from 'lucide-react';
+import { Zap, Swords, Flame, Coffee } from 'lucide-react';
 
 const scrollbarStyles = `
   .custom-scrollbar::-webkit-scrollbar {
@@ -45,10 +45,10 @@ const gameModes = [
     color: '#EB3514',
   },
   {
-    id: 'daily',
-    name: 'Daily Quest',
-    description: 'A curated set of 10 puzzles every day. Maintain your streak and unlock new profile themes.',
-    icon: <CalendarCheck size={20} />,
+    id: 'zen',
+    name: 'Zen Mode',
+    description: 'Practice at your own pace. Customize modes and tenses. No pressure, no timer.',
+    icon: <Coffee size={20} />,
     color: '#6366F1',
   },
 ];
@@ -119,11 +119,17 @@ const Arena = () => {
       if (modeId === 'streak') {
         return { bestStreak: 0 };
       }
+      if (modeId === 'zen') {
+        return { correct: 0, wrong: 0 };
+      }
       return { games: 0, rating: 1200, wins: 0 };
     }
     const mode = statsData[modeId];
     if (modeId === 'streak') {
       return { bestStreak: mode.bestStreak || 0 };
+    }
+    if (modeId === 'zen') {
+      return { correct: mode.correct || 0, wrong: mode.wrong || 0 };
     }
     return {
       games: mode.games || 0,
@@ -166,8 +172,22 @@ const Arena = () => {
                 {gameModes.map((mode) => {
                   const stats = getGameStats(mode.id);
                   const isStreak = mode.id === 'streak';
-                  const value = isStreak ? stats.bestStreak : stats.rating;
-                  const label = isStreak ? 'streak' : 'ELO';
+                  const isZen = mode.id === 'zen';
+                  
+                  let value, label;
+                  if (isStreak) {
+                    value = stats.bestStreak;
+                    label = 'streak';
+                  } else if (isZen) {
+                    const total = stats.correct + stats.wrong;
+                    const ratio = total > 0 ? `${stats.correct}/${total}` : '0/0';
+                    value = ratio;
+                    label = 'ratio';
+                  } else {
+                    value = stats.rating;
+                    label = 'ELO';
+                  }
+                  
                   return (
                     <Link
                       key={mode.id}
@@ -268,7 +288,8 @@ const Arena = () => {
               const stats = getGameStats(mode.id);
               const isBlitz = mode.id === 'blitz';
               const isStreak = mode.id === 'streak';
-              const isDisabled = !isBlitz && !isStreak;
+              const isZen = mode.id === 'zen';
+              const isDisabled = !isBlitz && !isStreak && !isZen;
 
               const cardContent = (
                 <div
@@ -300,13 +321,19 @@ const Arena = () => {
                           <span className="text-xs text-gray-400 uppercase tracking-wide">
                             Best streak
                           </span>
+                        ) : isZen ? (
+                          <span className="text-xs text-gray-400 uppercase tracking-wide">
+                            Practice mode
+                          </span>
                         ) : (
                           <span className="text-xs text-gray-400 uppercase tracking-wide">
                             {formatNumber(stats.games || 0)} games
                           </span>
                         )}
                         <span className="text-sm font-bold" style={{ color: mode.color }}>
-                          {isStreak ? `${stats.bestStreak} 🔥` : `${stats.rating} ELO`}
+                          {isStreak ? `${stats.bestStreak} 🔥` : 
+                           isZen ? `${stats.correct || 0}/${(stats.correct || 0) + (stats.wrong || 0)}` :
+                           `${stats.rating} ELO`}
                         </span>
                       </div>
                     </div>
@@ -314,7 +341,7 @@ const Arena = () => {
                 </div>
               );
 
-              return (isBlitz || isStreak) ? (
+              return (isBlitz || isStreak || isZen) ? (
                 <Link key={mode.id} to={`/arena/${mode.id}`}>{cardContent}</Link>
               ) : (
                 <div key={mode.id}>{cardContent}</div>

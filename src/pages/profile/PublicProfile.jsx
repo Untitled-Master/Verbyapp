@@ -4,7 +4,7 @@ import MainNavbar from '../../components/MainNavbar';
 import { ref, onValue, get } from 'firebase/database';
 import { database } from '../../lib/firebase';
 import { 
-  Zap, Swords, Flame, 
+  Zap, Swords, Flame, Coffee,
   ArrowLeft, Globe, Calendar, Target 
 } from 'lucide-react';
 import { 
@@ -17,6 +17,7 @@ const SILVER_TROPHY_IMG = 'https://lichess1.org/assets/hashed/silver-cup-2.d820d
 const variants = [
   { id: 'blitz', name: 'Blitz', color: '#333333', icon: <Zap size={14}/> },
   { id: 'streak', name: 'Streak', color: '#EB3514', icon: <Flame size={14}/> },
+  { id: 'zen', name: 'Zen', color: '#6366F1', icon: <Coffee size={14}/> },
   { id: 'duels', name: 'Duels', color: '#C0C0C0', icon: <Swords size={14}/> },
 ];
 
@@ -106,6 +107,7 @@ const PublicProfile = () => {
       case 'blitz': return `Blitz - ${game.correct || 0}/${game.total || 0}`;
       case 'duels': return `Duels - ${game.won ? 'Won' : 'Lost'}`;
       case 'streak': return `Streak - ${game.streak || 0}`;
+      case 'zen': return `Zen - ${game.correct || 0}/${(game.correct || 0) + (game.wrong || 0)}`;
       default: return game.mode;
     }
   };
@@ -131,8 +133,13 @@ const PublicProfile = () => {
             <div className="flex flex-col gap-3">
               {variants.map((variant) => {
                 const isStreak = variant.id === 'streak';
-                const data = statsData?.[variant.id] || (isStreak ? { bestStreak: 0 } : { rating: 1200, games: 0 });
+                const isZen = variant.id === 'zen';
+                const data = statsData?.[variant.id] || (isStreak ? { bestStreak: 0 } : isZen ? { correct: 0, wrong: 0 } : { rating: 1200, games: 0 });
                 const rank = ranks[variant.id];
+                const zenCorrect = data.correct || 0;
+                const zenWrong = data.wrong || 0;
+                const zenTotal = zenCorrect + zenWrong;
+                const zenRatio = zenTotal > 0 ? `${zenCorrect}/${zenTotal}` : '0/0';
                 return (
                   <div key={variant.id} className="flex items-center justify-between p-3 rounded-xl bg-[#F0EFEB]/50 border border-transparent hover:border-[#DEDDDA] transition-all">
                     <div className="flex items-center gap-3">
@@ -141,12 +148,16 @@ const PublicProfile = () => {
                       </div>
                       <div>
                         <h4 className="text-xs font-semibold">{variant.name}</h4>
-                        <p className="text-[10px] text-gray-400">{isStreak ? 'Best streak' : `${data.games || 0} games`}</p>
+                        <p className="text-[10px] text-gray-400">
+                          {isStreak ? 'Best streak' : isZen ? `${zenCorrect} correct` : `${data.games || 0} games`}
+                        </p>
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className="text-base font-bold">{isStreak ? (data.bestStreak || 0) : (data.rating || 1200)}</div>
-                      {!isStreak && rank && <div className="text-[10px] text-[#EB3514] font-medium">#{rank}</div>}
+                      <div className="text-base font-bold">
+                        {isStreak ? (data.bestStreak || 0) : isZen ? zenRatio : (data.rating || 1200)}
+                      </div>
+                      {!isStreak && !isZen && rank && <div className="text-[10px] text-[#EB3514] font-medium">#{rank}</div>}
                     </div>
                   </div>
                 );
