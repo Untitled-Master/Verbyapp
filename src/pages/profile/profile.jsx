@@ -58,11 +58,13 @@ const Profile = () => {
         Object.entries(history).forEach(([mode, games]) => {
           if (games && typeof games === 'object') {
             Object.entries(games).forEach(([gameId, gameData]) => {
-              allGames.push({
-                id: gameId,
-                mode,
-                ...gameData,
-              });
+              if (gameId !== '_initialized' && gameData && typeof gameData === 'object' && gameData.timestamp) {
+                allGames.push({
+                  id: gameId,
+                  mode,
+                  ...gameData,
+                });
+              }
             });
           }
         });
