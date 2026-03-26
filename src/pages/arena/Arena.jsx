@@ -259,12 +259,16 @@ const Arena = () => {
               const { games, rating } = getGameStats(mode.id);
               const isDaily = mode.id === 'daily';
               const streak = isDaily ? dailyStreak : 0;
+              const isBlitz = mode.id === 'blitz';
+              const isDisabled = !isBlitz;
 
-              return (
-                <Link 
-                  key={mode.id}
-                  to={`/arena/${mode.id}`}
-                  className="group p-5 bg-[#F0EFEB] border border-[#DEDDDA] rounded-lg hover:border-[#EB3514] hover:bg-[#EAE9E4] transition-all"
+              const cardContent = (
+                <div
+                  className={`group p-5 bg-[#F0EFEB] border border-[#DEDDDA] rounded-lg transition-all ${
+                    isDisabled 
+                      ? 'opacity-60 cursor-not-allowed' 
+                      : 'hover:border-[#EB3514] hover:bg-[#EAE9E4]'
+                  }`}
                 >
                   <div className="flex items-start gap-4">
                     <div 
@@ -281,6 +285,11 @@ const Arena = () => {
                             🔥 {streak} Day Streak
                           </span>
                         )}
+                        {isDisabled && (
+                          <span className="text-xs font-bold text-[#EB3514] uppercase tracking-wide">
+                            Coming Soon
+                          </span>
+                        )}
                       </div>
                       <p className="text-xs text-gray-500 leading-relaxed mb-3">{mode.description}</p>
                       <div className="flex items-center justify-between">
@@ -293,7 +302,13 @@ const Arena = () => {
                       </div>
                     </div>
                   </div>
-                </Link>
+                </div>
+              );
+
+              return isBlitz ? (
+                <Link key={mode.id} to={`/arena/${mode.id}`}>{cardContent}</Link>
+              ) : (
+                <div key={mode.id}>{cardContent}</div>
               );
             })}
           </div>
