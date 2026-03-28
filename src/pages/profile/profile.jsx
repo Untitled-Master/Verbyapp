@@ -9,7 +9,7 @@ import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend 
 } from 'recharts';
 import { 
-  Zap, Target, Globe, Calendar, Swords, Flame, Pencil, Coffee
+  Zap, Target, Globe, Calendar, Swords, Flame, Pencil, Coffee, Brain, Sprout
 } from 'lucide-react';
 
 const Profile = () => {
@@ -97,6 +97,8 @@ const Profile = () => {
     { id: 'streak', name: 'Streak', color: '#EB3514', icon: <Flame size={14}/> },
     { id: 'zen', name: 'Zen', color: '#6366F1', icon: <Coffee size={14}/> },
     { id: 'duels', name: 'Duels', color: '#C0C0C0', icon: <Swords size={14}/> },
+    { id: 'sdl', name: 'SDL', color: '#059669', icon: <Brain size={14}/> },
+    { id: 'sdlzen', name: 'SDL Zen', color: '#10B981', icon: <Sprout size={14}/> },
   ];
 
   const getModeIcon = (mode) => {
@@ -118,7 +120,8 @@ const Profile = () => {
       case 'streak':
         return `Played Streak - ${game.streak || 0} streak`;
       case 'zen':
-        return `Played Zen - ${game.correct || 0}/${(game.correct || 0) + (game.wrong || 0)} correct`;
+      case 'sdlzen':
+        return `Played ${getModeName(game.mode)} - ${game.correct || 0}/${(game.correct || 0) + (game.wrong || 0)} correct`;
       default:
         return `Played ${getModeName(game.mode)}`;
     }
@@ -134,24 +137,24 @@ const Profile = () => {
         <aside className="w-full lg:w-[280px] border-r border-[#DEDDDA] p-6 lg:p-8 bg-white">
           <h3 className="text-[10px] font-semibold text-gray-400 uppercase tracking-widest mb-4">Stats</h3>
           <div className="flex flex-col gap-3">
-            {statsData && Object.entries(statsData).map(([key, data]) => {
-              const variant = variants.find(v => v.id === key);
-              const isStreak = key === 'streak';
-              const isZen = key === 'zen';
+            {variants.map((variant) => {
+              const data = statsData?.[variant.id] || {};
+              const isStreak = variant.id === 'streak';
+              const isZen = variant.id === 'zen' || variant.id === 'sdlzen';
               const zenCorrect = data.correct || 0;
               const zenWrong = data.wrong || 0;
               const zenTotal = zenCorrect + zenWrong;
               const zenRatio = zenTotal > 0 ? `${zenCorrect}/${zenTotal}` : '0/0';
               return (
-                <div key={key} className="flex items-center justify-between p-3 rounded-lg bg-[#F0EFEB]">
+                <div key={variant.id} className="flex items-center justify-between p-3 rounded-lg bg-[#F0EFEB]">
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: `${variant?.color || '#9CA3AF'}15` }}>
-                      <span style={{ color: variant?.color || '#9CA3AF' }}>
-                        {variant?.icon || <Target size={14}/>}
+                    <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: `${variant.color}15` }}>
+                      <span style={{ color: variant.color }}>
+                        {variant.icon}
                       </span>
                     </div>
                     <div>
-                      <h4 className="text-xs font-semibold">{key.charAt(0).toUpperCase() + key.slice(1)}</h4>
+                      <h4 className="text-xs font-semibold">{variant.name}</h4>
                       <p className="text-[10px] text-gray-400">
                         {isStreak ? 'Best streak' : isZen ? `${zenCorrect} correct` : `${data.games || 0} games`}
                       </p>

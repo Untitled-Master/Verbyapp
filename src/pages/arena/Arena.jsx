@@ -4,7 +4,7 @@ import MainNavbar from '../../components/MainNavbar';
 import { useAuth } from '../../context/AuthContext';
 import { ref, onValue } from 'firebase/database';
 import { database } from '../../lib/firebase';
-import { Zap, Swords, Flame, Coffee } from 'lucide-react';
+import { Zap, Swords, Flame, Coffee, Brain, Sprout } from 'lucide-react';
 
 const scrollbarStyles = `
   .custom-scrollbar::-webkit-scrollbar {
@@ -50,6 +50,20 @@ const gameModes = [
     description: 'Practice at your own pace. Customize modes and tenses. No pressure, no timer.',
     icon: <Coffee size={20} />,
     color: '#6366F1',
+  },
+  {
+    id: 'sdl',
+    name: 'SDL Blitz',
+    description: 'Test your conjugation skills with the Structure de la langue question set. 60 seconds to prove your mastery.',
+    icon: <Brain size={20} />,
+    color: '#059669',
+  },
+  {
+    id: 'sdlzen',
+    name: 'SDL Zen',
+    description: 'Practice grammar at your own pace. Choose level and topics, learn from explanations.',
+    icon: <Sprout size={20} />,
+    color: '#10B981',
   },
 ];
 
@@ -119,7 +133,7 @@ const Arena = () => {
       if (modeId === 'streak') {
         return { bestStreak: 0 };
       }
-      if (modeId === 'zen') {
+      if (modeId === 'zen' || modeId === 'sdlzen') {
         return { correct: 0, wrong: 0 };
       }
       return { games: 0, rating: 1200, wins: 0 };
@@ -128,7 +142,7 @@ const Arena = () => {
     if (modeId === 'streak') {
       return { bestStreak: mode.bestStreak || 0 };
     }
-    if (modeId === 'zen') {
+    if (modeId === 'zen' || modeId === 'sdlzen') {
       return { correct: mode.correct || 0, wrong: mode.wrong || 0 };
     }
     return {
@@ -172,7 +186,7 @@ const Arena = () => {
                 {gameModes.map((mode) => {
                   const stats = getGameStats(mode.id);
                   const isStreak = mode.id === 'streak';
-                  const isZen = mode.id === 'zen';
+                  const isZen = mode.id === 'zen' || mode.id === 'sdlzen';
                   
                   let value, label;
                   if (isStreak) {
@@ -288,8 +302,10 @@ const Arena = () => {
               const stats = getGameStats(mode.id);
               const isBlitz = mode.id === 'blitz';
               const isStreak = mode.id === 'streak';
-              const isZen = mode.id === 'zen';
-              const isDisabled = !isBlitz && !isStreak && !isZen;
+              const isZen = mode.id === 'zen' || mode.id === 'sdlzen';
+              const isSdl = mode.id === 'sdl';
+              const isSdlZen = mode.id === 'sdlzen';
+              const isDisabled = !isBlitz && !isStreak && !isZen && !isSdl && !isSdlZen;
 
               const cardContent = (
                 <div
@@ -341,7 +357,7 @@ const Arena = () => {
                 </div>
               );
 
-              return (isBlitz || isStreak || isZen) ? (
+              return (isBlitz || isStreak || isZen || isSdl || isSdlZen) ? (
                 <Link key={mode.id} to={`/arena/${mode.id}`}>{cardContent}</Link>
               ) : (
                 <div key={mode.id}>{cardContent}</div>

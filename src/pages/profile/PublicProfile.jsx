@@ -4,7 +4,7 @@ import MainNavbar from '../../components/MainNavbar';
 import { ref, onValue, get } from 'firebase/database';
 import { database } from '../../lib/firebase';
 import { 
-  Zap, Swords, Flame, Coffee,
+  Zap, Swords, Flame, Coffee, Brain, Sprout,
   ArrowLeft, Globe, Calendar, Target 
 } from 'lucide-react';
 import { 
@@ -19,6 +19,8 @@ const variants = [
   { id: 'streak', name: 'Streak', color: '#EB3514', icon: <Flame size={14}/> },
   { id: 'zen', name: 'Zen', color: '#6366F1', icon: <Coffee size={14}/> },
   { id: 'duels', name: 'Duels', color: '#C0C0C0', icon: <Swords size={14}/> },
+  { id: 'sdl', name: 'SDL', color: '#059669', icon: <Brain size={14}/> },
+  { id: 'sdlzen', name: 'SDL Zen', color: '#10B981', icon: <Sprout size={14}/> },
 ];
 
 const PublicProfile = () => {
@@ -107,7 +109,8 @@ const PublicProfile = () => {
       case 'blitz': return `Blitz - ${game.correct || 0}/${game.total || 0}`;
       case 'duels': return `Duels - ${game.won ? 'Won' : 'Lost'}`;
       case 'streak': return `Streak - ${game.streak || 0}`;
-      case 'zen': return `Zen - ${game.correct || 0}/${(game.correct || 0) + (game.wrong || 0)}`;
+      case 'zen':
+      case 'sdlzen': return `${game.mode === 'sdlzen' ? 'SDL Zen' : 'Zen'} - ${game.correct || 0}/${(game.correct || 0) + (game.wrong || 0)}`;
       default: return game.mode;
     }
   };
@@ -133,7 +136,7 @@ const PublicProfile = () => {
             <div className="flex flex-col gap-3">
               {variants.map((variant) => {
                 const isStreak = variant.id === 'streak';
-                const isZen = variant.id === 'zen';
+                const isZen = variant.id === 'zen' || variant.id === 'sdlzen';
                 const data = statsData?.[variant.id] || (isStreak ? { bestStreak: 0 } : isZen ? { correct: 0, wrong: 0 } : { rating: 1200, games: 0 });
                 const rank = ranks[variant.id];
                 const zenCorrect = data.correct || 0;

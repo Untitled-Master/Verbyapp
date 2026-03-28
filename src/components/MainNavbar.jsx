@@ -9,6 +9,7 @@ import { useAuth } from '../context/AuthContext';
 const gameModes = [
   { id: 'blitz', name: 'Blitz', href: '/community/blitz', color: '#333333' },
   { id: 'streak', name: 'Streak', href: '/community/streak', color: '#EB3514' },
+  { id: 'sdl', name: 'SDL', href: '/community/sdl', color: '#059669' },
 ];
 
 const MainNavbar = () => {

@@ -1,0 +1,1402 @@
+[
+   {
+      "id":1,
+      "question":"Je ___ un café au lait, s'il vous plaît.",
+      "options":[
+         "voudrais",
+         "vouloir",
+         "voulu",
+         "voulait"
+      ],
+      "correct_answer":"A",
+      "explanation":"On utilise le conditionnel présent pour exprimer une demande polie.",
+      "level":"A1",
+      "topic":"conjugaison"
+   },
+   {
+      "id":2,
+      "question":"Il y a ___ fleurs dans le jardin.",
+      "options":[
+         "des",
+         "du",
+         "de la",
+         "un"
+      ],
+      "correct_answer":"A",
+      "explanation":"On utilise l'article indéfini pluriel 'des' pour des noms comptables au pluriel.",
+      "level":"A1",
+      "topic":"articles"
+   },
+   {
+      "id":3,
+      "question":"Où ___ tu habites ?",
+      "options":[
+         "est-ce que",
+         "est-ce",
+         "que",
+         "qu'est-ce"
+      ],
+      "correct_answer":"A",
+      "explanation":"'Est-ce que' est la structure standard pour poser une question sans inversion.",
+      "level":"A1",
+      "topic":"interrogation"
+   },
+   {
+      "id":4,
+      "question":"Ma sœur est ___ que moi.",
+      "options":[
+         "plus grand",
+         "plus grande",
+         "le plus grand",
+         "grande"
+      ],
+      "correct_answer":"B",
+      "explanation":"L'adjectif s'accorde en genre (féminin) et en nombre avec le sujet 'ma sœur'.",
+      "level":"A1",
+      "topic":"accord"
+   },
+   {
+      "id":5,
+      "question":"Nous ___ au cinéma hier soir.",
+      "options":[
+         "somme allés",
+         "sommes allés",
+         "allons",
+         "allés"
+      ],
+      "correct_answer":"B",
+      "explanation":"Le passé composé avec l'auxiliaire 'être' nécessite l'accord du participe passé avec le sujet 'nous'.",
+      "level":"A2",
+      "topic":"temps du passé"
+   },
+   {
+      "id":6,
+      "question":"Je ne trouve pas ___ clés.",
+      "options":[
+         "mon",
+         "ma",
+         "mes",
+         "le"
+      ],
+      "correct_answer":"C",
+      "explanation":"'Mes' est l'adjectif possessif pluriel correspondant au sujet 'je'.",
+      "level":"A1",
+      "topic":"possessifs"
+   },
+   {
+      "id":7,
+      "question":"Demain, il ___ beau sur toute la France.",
+      "options":[
+         "fera",
+         "fait",
+         "faisait",
+         "faire"
+      ],
+      "correct_answer":"A",
+      "explanation":"On utilise le futur simple pour exprimer une prévision météorologique.",
+      "level":"A2",
+      "topic":"futur"
+   },
+   {
+      "id":8,
+      "question":"Tu veux du sucre ? Non merci, je n'___ veux pas.",
+      "options":[
+         "le",
+         "la",
+         "en",
+         "y"
+      ],
+      "correct_answer":"C",
+      "explanation":"Le pronom 'en' remplace un nom précédé d'un article partitif (du sucre).",
+      "level":"A2",
+      "topic":"pronoms"
+   },
+   {
+      "id":9,
+      "question":"Quand j'étais petit, je ___ souvent au parc.",
+      "options":[
+         "suis allé",
+         "allais",
+         "irai",
+         "irais"
+      ],
+      "correct_answer":"B",
+      "explanation":"L'imparfait est utilisé pour décrire une habitude ou une action répétée dans le passé.",
+      "level":"A2",
+      "topic":"temps du passé"
+   },
+   {
+      "id":10,
+      "question":"C'est la voiture ___ appartient à mon voisin.",
+      "options":[
+         "qui",
+         "que",
+         "dont",
+         "où"
+      ],
+      "correct_answer":"A",
+      "explanation":"Le pronom relatif 'qui' est sujet du verbe 'appartient'.",
+      "level":"A2",
+      "topic":"pronoms relatifs"
+   },
+   {
+      "id":11,
+      "question":"Il faut que nous ___ plus d'efforts.",
+      "options":[
+         "faisons",
+         "faisions",
+         "fassions",
+         "faites"
+      ],
+      "correct_answer":"C",
+      "explanation":"Après 'il faut que', on doit utiliser le subjonctif présent.",
+      "level":"B1",
+      "topic":"subjonctif"
+   },
+   {
+      "id":12,
+      "question":"Si j'avais de l'argent, je ___ un voyage.",
+      "options":[
+         "ferais",
+         "faisais",
+         "ferai",
+         "fasse"
+      ],
+      "correct_answer":"A",
+      "explanation":"Dans une structure avec 'si + imparfait', la proposition principale est au conditionnel présent.",
+      "level":"B1",
+      "topic":"conditionnel"
+   },
+   {
+      "id":13,
+      "question":"C'est l'entreprise ___ je travaille depuis trois ans.",
+      "options":[
+         "que",
+         "où",
+         "dont",
+         "laquelle"
+      ],
+      "correct_answer":"B",
+      "explanation":"Le pronom relatif 'où' exprime ici le lieu.",
+      "level":"B1",
+      "topic":"pronoms relatifs"
+   },
+   {
+      "id":14,
+      "question":"Je lui ai prêté mon livre pour qu'il ___ le lire.",
+      "options":[
+         "puisse",
+         "peut",
+         "pourra",
+         "pouvait"
+      ],
+      "correct_answer":"A",
+      "explanation":"La conjonction 'pour que' est obligatoirement suivie du subjonctif.",
+      "level":"B1",
+      "topic":"subjonctif"
+   },
+   {
+      "id":15,
+      "question":"Elle s'est ___ les mains avant de manger.",
+      "options":[
+         "lavé",
+         "lavée",
+         "lavés",
+         "lavées"
+      ],
+      "correct_answer":"A",
+      "explanation":"Avec un verbe pronominal, il n'y a pas d'accord si le COD (les mains) est placé après le verbe.",
+      "level":"B2",
+      "topic":"accord"
+   },
+   {
+      "id":16,
+      "question":"___ mon avis, ce projet est trop coûteux.",
+      "options":[
+         "À",
+         "Selon",
+         "D'après",
+         "Pour"
+      ],
+      "correct_answer":"A",
+      "explanation":"L'expression figée pour donner son opinion est 'À mon avis'.",
+      "level":"B1",
+      "topic":"prépositions"
+   },
+   {
+      "id":17,
+      "question":"Bien qu'il ___ fatigué, il a continué à travailler.",
+      "options":[
+         "est",
+         "était",
+         "soit",
+         "sera"
+      ],
+      "correct_answer":"C",
+      "explanation":"'Bien que' introduit une concession et demande le subjonctif.",
+      "level":"B2",
+      "topic":"connecteurs logiques"
+   },
+   {
+      "id":18,
+      "question":"Je ne pense pas qu'il ___ la vérité.",
+      "options":[
+         "dit",
+         "dise",
+         "disait",
+         "dira"
+      ],
+      "correct_answer":"B",
+      "explanation":"Les verbes d'opinion à la forme négative sont généralement suivis du subjonctif.",
+      "level":"B1",
+      "topic":"subjonctif"
+   },
+   {
+      "id":19,
+      "question":"Il est parti ___ dire au revoir.",
+      "options":[
+         "sans",
+         "pour",
+         "par",
+         "en"
+      ],
+      "correct_answer":"A",
+      "explanation":"La préposition 'sans' est suivie de l'infinitif pour exprimer l'absence d'une action.",
+      "level":"A2",
+      "topic":"prépositions"
+   },
+   {
+      "id":20,
+      "question":"Ces dossiers ? Je les ai ___ ce matin.",
+      "options":[
+         "fini",
+         "finis",
+         "finie",
+         "finies"
+      ],
+      "correct_answer":"B",
+      "explanation":"Le participe passé s'accorde avec le COD 'les' (masculin pluriel) placé avant le verbe.",
+      "level":"B1",
+      "topic":"accord"
+   },
+   {
+      "id":21,
+      "question":"Je ne crois pas qu'ils ___ déjà arrivés.",
+      "options":[
+         "sont",
+         "soient",
+         "étaient",
+         "seront"
+      ],
+      "correct_answer":"B",
+      "explanation":"La structure 'ne pas croire que' demande l'emploi du subjonctif.",
+      "level":"B2",
+      "topic":"subjonctif"
+   },
+   {
+      "id":22,
+      "question":"C'est un film ___ tout le monde parle.",
+      "options":[
+         "que",
+         "qui",
+         "dont",
+         "lequel"
+      ],
+      "correct_answer":"C",
+      "explanation":"'Dont' remplace un complément introduit par 'de' (parler de quelque chose).",
+      "level":"B1",
+      "topic":"pronoms relatifs"
+   },
+   {
+      "id":23,
+      "question":"Si j'avais su, j'___ plus tôt.",
+      "options":[
+         "serais venu",
+         "viendrais",
+         "suis venu",
+         "vienne"
+      ],
+      "correct_answer":"A",
+      "explanation":"Pour exprimer un regret sur le passé (si + plus-que-parfait), on utilise le conditionnel passé.",
+      "level":"B2",
+      "topic":"conditionnel"
+   },
+   {
+      "id":24,
+      "question":"Ils se sont ___ des messages tout l'après-midi.",
+      "options":[
+         "envoyé",
+         "envoyés",
+         "envoyée",
+         "envoyées"
+      ],
+      "correct_answer":"A",
+      "explanation":"Dans 'se sont envoyé', 'se' est un COI (envoyer à soi-même), donc il n'y a pas d'accord.",
+      "level":"C1",
+      "topic":"accord"
+   },
+   {
+      "id":25,
+      "question":"___ soit son talent, il doit s'entraîner.",
+      "options":[
+         "Quel que",
+         "Quelque",
+         "Quels que",
+         "Quel"
+      ],
+      "correct_answer":"A",
+      "explanation":"'Quel que' s'accorde avec le sujet 'talent' (masculin singulier) et s'écrit en deux mots devant le verbe être.",
+      "level":"C1",
+      "topic":"concession"
+   },
+   {
+      "id":26,
+      "question":"Faute ___ temps, nous n'avons pas pu visiter le musée.",
+      "options":[
+         "de",
+         "du",
+         "le",
+         "par"
+      ],
+      "correct_answer":"A",
+      "explanation":"L'expression 'faute de' signifie 'par manque de'.",
+      "level":"B2",
+      "topic":"prépositions"
+   },
+   {
+      "id":27,
+      "question":"Je cherche un stagiaire qui ___ parler chinois.",
+      "options":[
+         "sait",
+         "sache",
+         "saura",
+         "savait"
+      ],
+      "correct_answer":"B",
+      "explanation":"On utilise le subjonctif dans une relative quand on cherche une personne avec des caractéristiques précises dont l'existence n'est pas certaine.",
+      "level":"B2",
+      "topic":"subjonctif"
+   },
+   {
+      "id":28,
+      "question":"Il agit comme s'il ___ le patron.",
+      "options":[
+         "est",
+         "était",
+         "soit",
+         "serait"
+      ],
+      "correct_answer":"B",
+      "explanation":"Après 'comme si', on utilise systématiquement l'imparfait pour exprimer l'irréel du présent.",
+      "level":"B1",
+      "topic":"concordance des temps"
+   },
+   {
+      "id":29,
+      "question":"___ vous fassiez, je vous soutiendrai.",
+      "options":[
+         "Quoi que",
+         "Quoique",
+         "Quel que",
+         "C'est pourquoi"
+      ],
+      "correct_answer":"A",
+      "explanation":"'Quoi que' (en deux mots) signifie 'quelle que soit la chose que'.",
+      "level":"C1",
+      "topic":"connecteurs logiques"
+   },
+   {
+      "id":30,
+      "question":"Elle a acheté ___ jolies fleurs.",
+      "options":[
+         "des",
+         "de",
+         "les",
+         "du"
+      ],
+      "correct_answer":"B",
+      "explanation":"Devant un adjectif épithète placé avant le nom pluriel, 'des' devient 'de'.",
+      "level":"B2",
+      "topic":"articles"
+   },
+   {
+      "id":31,
+      "question":"Je ne pense pas qu'il ___ s'adapter à ce climat.",
+      "options":[
+         "puisse",
+         "peut",
+         "pourra",
+         "pouvait"
+      ],
+      "correct_answer":"A",
+      "explanation":"Le verbe 'penser' à la forme négative introduit le subjonctif.",
+      "level":"B1",
+      "topic":"subjonctif"
+   },
+   {
+      "id":32,
+      "question":"Voici le rapport ___ vous m'aviez demandé.",
+      "options":[
+         "que",
+         "qui",
+         "dont",
+         "où"
+      ],
+      "correct_answer":"A",
+      "explanation":"Le pronom relatif 'que' remplace le complément d'objet direct 'le rapport'.",
+      "level":"A2",
+      "topic":"pronoms relatifs"
+   },
+   {
+      "id":33,
+      "question":"Après ___ son travail, il est sorti.",
+      "options":[
+         "finir",
+         "ayant fini",
+         "avoir fini",
+         "finit"
+      ],
+      "correct_answer":"C",
+      "explanation":"Après la préposition 'après', on utilise l'infinitif passé.",
+      "level":"B1",
+      "topic":"infinitif"
+   },
+   {
+      "id":34,
+      "question":"Il s'est habitué ___ se lever tôt.",
+      "options":[
+         "à",
+         "de",
+         "pour",
+         "par"
+      ],
+      "correct_answer":"A",
+      "explanation":"Le verbe 's'habituer' se construit avec la préposition 'à'.",
+      "level":"A2",
+      "topic":"prépositions"
+   },
+   {
+      "id":35,
+      "question":"À peine ___ -il arrivé que le téléphone sonna.",
+      "options":[
+         "est",
+         "était",
+         "fut",
+         "a"
+      ],
+      "correct_answer":"B",
+      "explanation":"Dans un registre soutenu, après 'à peine', on utilise souvent l'inversion du sujet avec un temps du passé.",
+      "level":"C1",
+      "topic":"syntaxe"
+   },
+   {
+      "id":36,
+      "question":"Il se peut qu'il ___ en retard.",
+      "options":[
+         "est",
+         "soit",
+         "sera",
+         "serait"
+      ],
+      "correct_answer":"B",
+      "explanation":"La locution impersonnelle 'il se peut que' est suivie du subjonctif.",
+      "level":"B1",
+      "topic":"subjonctif"
+   },
+   {
+      "id":37,
+      "question":"Je n'ai vu ___ personne dans la rue.",
+      "options":[
+         "pas",
+         "plus",
+         "du tout",
+         "(rien)"
+      ],
+      "correct_answer":"D",
+      "explanation":"Avec 'personne', on n'utilise pas 'pas'. La négation est simplement 'ne... personne'.",
+      "level":"A2",
+      "topic":"negation"
+   },
+   {
+      "id":38,
+      "question":"Pourriez-vous me dire où ___ la poste ?",
+      "options":[
+         "se trouve",
+         "est-ce que est",
+         "trouve",
+         "y a"
+      ],
+      "correct_answer":"A",
+      "explanation":"Dans une question indirecte, on n'utilise pas 'est-ce que' et on maintient l'ordre sujet-verbe ou on inverse.",
+      "level":"B1",
+      "topic":"interrogation"
+   },
+   {
+      "id":39,
+      "question":"Ces maisons ont été ___ au siècle dernier.",
+      "options":[
+         "construit",
+         "construite",
+         "construits",
+         "construites"
+      ],
+      "correct_answer":"D",
+      "explanation":"Au passif, le participe passé s'accorde toujours avec le sujet (ces maisons - féminin pluriel).",
+      "level":"B1",
+      "topic":"accord"
+   },
+   {
+      "id":40,
+      "question":"J'ai acheté des pommes. J'___ ai pris trois kilos.",
+      "options":[
+         "les",
+         "en",
+         "y",
+         "des"
+      ],
+      "correct_answer":"B",
+      "explanation":"Le pronom 'en' est utilisé pour remplacer un nom précédé d'une notion de quantité.",
+      "level":"A2",
+      "topic":"pronoms"
+   },
+   {
+      "id":41,
+      "question":"Quoi qu'on en ___ , la situation s'améliore.",
+      "options":[
+         "dit",
+         "disait",
+         "dise",
+         "dira"
+      ],
+      "correct_answer":"C",
+      "explanation":"'Quoi que' est suivi du subjonctif pour exprimer une concession.",
+      "level":"C1",
+      "topic":"subjonctif"
+   },
+   {
+      "id":42,
+      "question":"Il a agi en ___ de cause.",
+      "options":[
+         "savoir",
+         "connaissance",
+         "raison",
+         "fait"
+      ],
+      "correct_answer":"B",
+      "explanation":"L'expression idiomatique est 'agir en connaissance de cause'.",
+      "level":"C1",
+      "topic":"idiomes"
+   },
+   {
+      "id":43,
+      "question":"Je doute qu'il ___ venir demain.",
+      "options":[
+         "pourra",
+         "puisse",
+         "peut",
+         "pouvait"
+      ],
+      "correct_answer":"B",
+      "explanation":"Le verbe 'douter que' exprime l'incertitude et requiert le subjonctif.",
+      "level":"B1",
+      "topic":"subjonctif"
+   },
+   {
+      "id":44,
+      "question":"C'est le plus beau paysage que j'___ jamais vu.",
+      "options":[
+         "aie",
+         "ai",
+         "avais",
+         "aurais"
+      ],
+      "correct_answer":"A",
+      "explanation":"Le subjonctif est souvent utilisé après un superlatif (le plus...).",
+      "level":"B2",
+      "topic":"subjonctif"
+   },
+   {
+      "id":45,
+      "question":"Il travaille beaucoup ___ réussir ses examens.",
+      "options":[
+         "pour",
+         "en",
+         "par",
+         "à"
+      ],
+      "correct_answer":"A",
+      "explanation":"La préposition 'pour' suivie d'un infinitif exprime le but.",
+      "level":"A1",
+      "topic":"prépositions"
+   },
+   {
+      "id":46,
+      "question":"Nous aimerions que vous ___ avec nous.",
+      "options":[
+         "veniez",
+         "venez",
+         "viendrez",
+         "vinsiez"
+      ],
+      "correct_answer":"A",
+      "explanation":"Le verbe 'aimer que' exprime un souhait et demande le subjonctif.",
+      "level":"B1",
+      "topic":"subjonctif"
+   },
+   {
+      "id":47,
+      "question":"Bien qu'il ___ pleuvoir, nous sommes sortis.",
+      "options":[
+         "se soit mis à",
+         "s'est mis à",
+         "se mette à",
+         "se mettrait à"
+      ],
+      "correct_answer":"A",
+      "explanation":"Après 'bien que', on utilise le subjonctif passé pour une action antérieure à l'action principale.",
+      "level":"C1",
+      "topic":"subjonctif"
+   },
+   {
+      "id":48,
+      "question":"Il s'est ___ la cheville en courant.",
+      "options":[
+         "tordu",
+         "tordue",
+         "tordus",
+         "tordues"
+      ],
+      "correct_answer":"A",
+      "explanation":"Le participe passé d'un verbe pronominal ne s'accorde pas avec le sujet si le COD (la cheville) suit le verbe.",
+      "level":"B2",
+      "topic":"accord"
+   },
+   {
+      "id":49,
+      "question":"C'est l'homme ___ la femme est médecin.",
+      "options":[
+         "que",
+         "dont",
+         "qui",
+         "lequel"
+      ],
+      "correct_answer":"B",
+      "explanation":"'Dont' exprime ici la possession (la femme de cet homme).",
+      "level":"B1",
+      "topic":"pronoms relatifs"
+   },
+   {
+      "id":50,
+      "question":"Il faut que tu t'___ avant qu'il ne soit trop tard.",
+      "options":[
+         "en ailles",
+         "en vas",
+         "en iras",
+         "en aille"
+      ],
+      "correct_answer":"A",
+      "explanation":"L'expression 's'en aller' au subjonctif présent (2ème personne) est 'que tu t'en ailles'.",
+      "level":"B2",
+      "topic":"subjonctif"
+   },
+   {
+      "id":51,
+      "question":"Dussé-je y passer la nuit, je ___ ce travail.",
+      "options":[
+         "finirai",
+         "finirais",
+         "finis",
+         "finissant"
+      ],
+      "correct_answer":"A",
+      "explanation":"'Dussé-je' exprime une concession hypothétique (même si je devais), suivie ici du futur pour exprimer la résolution.",
+      "level":"C2",
+      "topic":"syntaxe"
+   },
+   {
+      "id":52,
+      "question":"Il a échoué ___ avoir beaucoup travaillé.",
+      "options":[
+         "malgré",
+         "quoique",
+         "bien qu'",
+         "pourtant"
+      ],
+      "correct_answer":"A",
+      "explanation":"'Malgré' est suivi d'un groupe nominal ou de l'infinitif passé (dans certains registres), bien que 'malgré le fait d'avoir' soit plus courant.",
+      "level":"B2",
+      "topic":"connecteurs logiques"
+   },
+   {
+      "id":53,
+      "question":"Quels que ___ vos problèmes, nous vous aiderons.",
+      "options":[
+         "soient",
+         "sont",
+         "soit",
+         "seraient"
+      ],
+      "correct_answer":"A",
+      "explanation":"'Quels que' s'accorde avec le nom 'problèmes' (masculin pluriel) et demande le subjonctif.",
+      "level":"B2",
+      "topic":"subjonctif"
+   },
+   {
+      "id":54,
+      "question":"Elle a l'air ___ de sa nouvelle maison.",
+      "options":[
+         "content",
+         "contente",
+         "contents",
+         "contentes"
+      ],
+      "correct_answer":"B",
+      "explanation":"L'adjectif dans 'avoir l'air' s'accorde généralement avec le sujet (elle).",
+      "level":"A2",
+      "topic":"accord"
+   },
+   {
+      "id":55,
+      "question":"___ -vous l'heure, s'il vous plaît ?",
+      "options":[
+         "Avez",
+         "Sauriez",
+         "Auriez",
+         "Connaissez"
+      ],
+      "correct_answer":"C",
+      "explanation":"'Auriez-vous l'heure' est la forme de politesse standard au conditionnel.",
+      "level":"A1",
+      "topic":"interrogation"
+   },
+   {
+      "id":56,
+      "question":"On m'a dit que vous ___ partir demain.",
+      "options":[
+         "deviez",
+         "devriez",
+         "doivent",
+         "du"
+      ],
+      "correct_answer":"A",
+      "explanation":"L'imparfait 'deviez' exprime une intention ou une obligation prévue dans le futur par rapport à un passé.",
+      "level":"B1",
+      "topic":"temps du passé"
+   },
+   {
+      "id":57,
+      "question":"___ est la capitale de la France ?",
+      "options":[
+         "Quel",
+         "Quelle",
+         "Qu'est-ce",
+         "Qui"
+      ],
+      "correct_answer":"B",
+      "explanation":"L'adjectif interrogatif 'quelle' s'accorde avec le nom féminin 'capitale'.",
+      "level":"A1",
+      "topic":"interrogation"
+   },
+   {
+      "id":58,
+      "question":"Il est possible que nous ___ un peu de retard.",
+      "options":[
+         "ayons",
+         "avons",
+         "aurons",
+         "aurions"
+      ],
+      "correct_answer":"A",
+      "explanation":"La tournure 'il est possible que' requiert le subjonctif.",
+      "level":"B1",
+      "topic":"subjonctif"
+   },
+   {
+      "id":59,
+      "question":"C'est la ville ___ je suis né.",
+      "options":[
+         "où",
+         "que",
+         "dont",
+         "laquelle"
+      ],
+      "correct_answer":"A",
+      "explanation":"Le pronom relatif 'où' désigne le lieu.",
+      "level":"A2",
+      "topic":"pronoms relatifs"
+   },
+   {
+      "id":60,
+      "question":"Pourriez-vous me ___ un stylo ?",
+      "options":[
+         "prêter",
+         "donner",
+         "emprunter",
+         "prendre"
+      ],
+      "correct_answer":"A",
+      "explanation":"On demande à quelqu'un de 'prêter' (lend) quelque chose.",
+      "level":"A1",
+      "topic":"vocabulaire"
+   },
+   {
+      "id":61,
+      "question":"Si j'___ plus de temps, j'apprendrais le piano.",
+      "options":[
+         "avais",
+         "aurais",
+         "ai",
+         "eusse"
+      ],
+      "correct_answer":"A",
+      "explanation":"Dans une conditionnelle au présent (résultat au conditionnel), on utilise 'si + imparfait'.",
+      "level":"B1",
+      "topic":"conditionnel"
+   },
+   {
+      "id":62,
+      "question":"Je cherche quelqu'un qui ___ m'aider.",
+      "options":[
+         "puisse",
+         "peut",
+         "pourra",
+         "pouvait"
+      ],
+      "correct_answer":"A",
+      "explanation":"Dans une proposition relative exprimant un souhait ou une recherche, on utilise le subjonctif.",
+      "level":"B2",
+      "topic":"subjonctif"
+   },
+   {
+      "id":63,
+      "question":"Elle est partie ___ le lever du soleil.",
+      "options":[
+         "avant",
+         "devant",
+         "auparavant",
+         "tôt"
+      ],
+      "correct_answer":"A",
+      "explanation":"'Avant' est une préposition de temps, 'devant' est une préposition de lieu.",
+      "level":"A1",
+      "topic":"prépositions"
+   },
+   {
+      "id":64,
+      "question":"Il s'en est fallu de ___ qu'il ne tombe.",
+      "options":[
+         "peu",
+         "rien",
+         "beaucoup",
+         "près"
+      ],
+      "correct_answer":"A",
+      "explanation":"L'expression 'il s'en est fallu de peu' signifie qu'une chose a failli arriver.",
+      "level":"C1",
+      "topic":"idiomes"
+   },
+   {
+      "id":65,
+      "question":"Il a été décidé ___ reporter la réunion.",
+      "options":[
+         "de",
+         "à",
+         "par",
+         "pour"
+      ],
+      "correct_answer":"A",
+      "explanation":"La structure impersonnelle 'il a été décidé de' + infinitif.",
+      "level":"B2",
+      "topic":"prépositions"
+   },
+   {
+      "id":66,
+      "question":"Je n'ai pas ___ d'argent sur moi.",
+      "options":[
+         "d'",
+         "de l'",
+         "du",
+         "un"
+      ],
+      "correct_answer":"A",
+      "explanation":"Après une négation absolue, l'article partitif devient 'de' (ou d' devant voyelle).",
+      "level":"A1",
+      "topic":"articles"
+   },
+   {
+      "id":67,
+      "question":"Ils ont dû ___ de train à Lyon.",
+      "options":[
+         "changer",
+         "quitter",
+         "partir",
+         "aller"
+      ],
+      "correct_answer":"A",
+      "explanation":"L'expression correcte pour prendre un autre train est 'changer de train'.",
+      "level":"A2",
+      "topic":"vocabulaire"
+   },
+   {
+      "id":68,
+      "question":"Je vous enverrai le document dès que je le ___ .",
+      "options":[
+         "recevrai",
+         "reçois",
+         "recevrais",
+         "reçoive"
+      ],
+      "correct_answer":"A",
+      "explanation":"Après 'dès que', on utilise le futur si l'action principale est au futur.",
+      "level":"B1",
+      "topic":"concordance des temps"
+   },
+   {
+      "id":69,
+      "question":"Bien qu'il ___ très froid, il se baigne.",
+      "options":[
+         "fasse",
+         "fait",
+         "faisait",
+         "fera"
+      ],
+      "correct_answer":"A",
+      "explanation":"'Bien que' est toujours suivi du subjonctif.",
+      "level":"B1",
+      "topic":"subjonctif"
+   },
+   {
+      "id":70,
+      "question":"Il a fini par ___ la vérité.",
+      "options":[
+         "avouer",
+         "avouant",
+         "avoue",
+         "avoir avoué"
+      ],
+      "correct_answer":"A",
+      "explanation":"'Finir par' est suivi de l'infinitif.",
+      "level":"A2",
+      "topic":"prépositions"
+   },
+   {
+      "id":71,
+      "question":"C'est l'un des rares livres que j'___ lu d'une traite.",
+      "options":[
+         "aie",
+         "ai",
+         "aurais",
+         "avais"
+      ],
+      "correct_answer":"A",
+      "explanation":"Après un superlatif ou une expression d'unicité (le seul, l'un des rares), on utilise le subjonctif.",
+      "level":"C1",
+      "topic":"subjonctif"
+   },
+   {
+      "id":72,
+      "question":"Quoi qu'il ___ , ne l'écoutez pas.",
+      "options":[
+         "dise",
+         "dit",
+         "disait",
+         "disent"
+      ],
+      "correct_answer":"A",
+      "explanation":"'Quoi que' (concession) réclame le subjonctif.",
+      "level":"B2",
+      "topic":"subjonctif"
+   },
+   {
+      "id":73,
+      "question":"Il s'est agi ___ trouver une solution rapidement.",
+      "options":[
+         "de",
+         "à",
+         "pour",
+         "par"
+      ],
+      "correct_answer":"A",
+      "explanation":"Le verbe impersonnel 'il s'agit de' se construit avec 'de'.",
+      "level":"B2",
+      "topic":"prépositions"
+   },
+   {
+      "id":74,
+      "question":"Il est ___ tard pour faire machine arrière.",
+      "options":[
+         "trop",
+         "très",
+         "beaucoup",
+         "assez"
+      ],
+      "correct_answer":"A",
+      "explanation":"'Trop' indique ici un degré excessif empêchant l'action.",
+      "level":"A1",
+      "topic":"adverbes"
+   },
+   {
+      "id":75,
+      "question":"En ___ le journal, j'ai vu cette annonce.",
+      "options":[
+         "lisant",
+         "lire",
+         "lu",
+         "lise"
+      ],
+      "correct_answer":"A",
+      "explanation":"Le gérondif (en + participe présent) exprime la simultanéité.",
+      "level":"B1",
+      "topic":"gérondif"
+   },
+   {
+      "id":76,
+      "question":"Peu ___ gens savent qu'il est l'auteur de ce livre.",
+      "options":[
+         "de",
+         "des",
+         "les",
+         "du"
+      ],
+      "correct_answer":"A",
+      "explanation":"Après un adverbe de quantité (peu, beaucoup), on utilise 'de'.",
+      "level":"A1",
+      "topic":"quantité"
+   },
+   {
+      "id":77,
+      "question":"Il est regrettable qu'il n'___ pas pu venir.",
+      "options":[
+         "ait",
+         "a",
+         "avait",
+         "aura"
+      ],
+      "correct_answer":"A",
+      "explanation":"L'expression d'un sentiment (regrettable) demande le subjonctif.",
+      "level":"B2",
+      "topic":"subjonctif"
+   },
+   {
+      "id":78,
+      "question":"C'est à lui ___ je pense sans cesse.",
+      "options":[
+         "que",
+         "dont",
+         "où",
+         "auquel"
+      ],
+      "correct_answer":"A",
+      "explanation":"Dans une mise en relief 'C'est... que', on utilise 'que' car 'à lui' n'est pas le sujet.",
+      "level":"C1",
+      "topic":"pronoms"
+   },
+   {
+      "id":79,
+      "question":"Nous vous saurions gré de bien vouloir nous .",
+      "options":[
+         "répondre",
+         "répondez",
+         "répondu",
+         "avoir répondu"
+      ],
+      "correct_answer":"A",
+      "explanation":"L'expression formelle 'savoir gré à quelqu'un de + infinitif'.",
+      "level":"C1",
+      "topic":"registre"
+   },
+   {
+      "id":80,
+      "question":"Elle a fait faire ce gâteau ___ un grand pâtissier.",
+      "options":[
+         "par",
+         "pour",
+         "de",
+         "avec"
+      ],
+      "correct_answer":"A",
+      "explanation":"Avec 'faire + infinitif' (factitif), l'agent de l'action est introduit par 'par'.",
+      "level":"B2",
+      "topic":"syntaxe"
+   },
+   {
+      "id":81,
+      "question":"Elle ___ de se lever quand le téléphone a sonné.",
+      "options":[
+         "venait",
+         "vient",
+         "allait",
+         "était"
+      ],
+      "correct_answer":"A",
+      "explanation":"Le passé récent à l'imparfait (venir de + infinitif) exprime une action qui venait juste d'avoir lieu au passé.",
+      "level":"A2",
+      "topic":"temps du passé"
+   },
+   {
+      "id":82,
+      "question":" la pluie, le match a eu lieu.",
+      "options":[
+         "Malgré",
+         "Bien que",
+         "Quoique",
+         "Pourtant"
+      ],
+      "correct_answer":"A",
+      "explanation":"'Malgré' est suivi d'un groupe nominal.",
+      "level":"B1",
+      "topic":"connecteurs logiques"
+   },
+   {
+      "id":83,
+      "question":"Prends ton parapluie, au cas où il ___ .",
+      "options":[
+         "pleuvrait",
+         "pleuve",
+         "pleut",
+         "pleuvait"
+      ],
+      "correct_answer":"A",
+      "explanation":"'Au cas où' est suivi du conditionnel.",
+      "level":"B2",
+      "topic":"conditionnel"
+   },
+   {
+      "id":84,
+      "question":"Le suspect a été entendu par le juge, ___ il a tout avoué.",
+      "options":[
+         "auquel",
+         "lequel",
+         "duquel",
+         "dont"
+      ],
+      "correct_answer":"A",
+      "explanation":"Le pronom relatif composé 'auquel' (à + lequel) s'accorde avec 'le juge'.",
+      "level":"B2",
+      "topic":"pronoms relatifs"
+   },
+   {
+      "id":85,
+      "question":"Mieux vaut tard ___ jamais.",
+      "options":[
+         "que",
+         "qu'à",
+         "que de",
+         "qu'en"
+      ],
+      "correct_answer":"A",
+      "explanation":"Expression idiomatique de comparaison.",
+      "level":"A1",
+      "topic":"idiomes"
+   },
+   {
+      "id":86,
+      "question":"Il n'y a rien ___ nous puissions faire.",
+      "options":[
+         "que",
+         "qui",
+         "dont",
+         "où"
+      ],
+      "correct_answer":"A",
+      "explanation":"Dans une relative après un antécédent négatif (rien), on utilise le subjonctif.",
+      "level":"C1",
+      "topic":"subjonctif"
+   },
+   {
+      "id":87,
+      "question":"Ces livres coûtent dix euros ___ .",
+      "options":[
+         "chacun",
+         "chaque",
+         "tous",
+         "quelques"
+      ],
+      "correct_answer":"A",
+      "explanation":"'Chacun' est le pronom utilisé pour indiquer le prix à l'unité.",
+      "level":"A2",
+      "topic":"pronoms"
+   },
+   {
+      "id":88,
+      "question":"Il s'en est ___ à ses collègues.",
+      "options":[
+         "pris",
+         "pris",
+         "prise",
+         "pris"
+      ],
+      "correct_answer":"A",
+      "explanation":"Le verbe 's'en prendre à quelqu'un' est une locution verbale où le participe passé est invariable.",
+      "level":"C1",
+      "topic":"accord"
+   },
+   {
+      "id":89,
+      "question":"Elle est restée chez elle ___ ne pas attraper froid.",
+      "options":[
+         "pour",
+         "de peur de",
+         "afin de",
+         "afin que"
+      ],
+      "correct_answer":"A",
+      "explanation":"Bien que 'de peur de' soit possible, 'pour' est le plus simple ici pour le but.",
+      "level":"A2",
+      "topic":"connecteurs logiques"
+   },
+   {
+      "id":90,
+      "question":"Où ___ tu hier ?",
+      "options":[
+         "étais",
+         "es",
+         "seras",
+         "sois"
+      ],
+      "correct_answer":"A",
+      "explanation":"L'imparfait du verbe être pour situer au passé.",
+      "level":"A1",
+      "topic":"temps du passé"
+   },
+   {
+      "id":91,
+      "question":"Quel que soit le chemin que vous ___ , soyez prudent.",
+      "options":[
+         "preniez",
+         "prenez",
+         "prendrez",
+         "prendriez"
+      ],
+      "correct_answer":"A",
+      "explanation":"La concession 'quel que soit' est suivie du subjonctif.",
+      "level":"B2",
+      "topic":"subjonctif"
+   },
+   {
+      "id":92,
+      "question":"___ que l'on dise, il ne changera pas d'avis.",
+      "options":[
+         "Quoi",
+         "Qu'est-ce",
+         "Que",
+         "Quel"
+      ],
+      "correct_answer":"A",
+      "explanation":"'Quoi que' exprime la concession (Whatever one says).",
+      "level":"B2",
+      "topic":"connecteurs logiques"
+   },
+   {
+      "id":93,
+      "question":"Il a dû s'excuser ___ son comportement.",
+      "options":[
+         "de",
+         "pour",
+         "par",
+         "à"
+      ],
+      "correct_answer":"B",
+      "explanation":"On s'excuse 'pour' une action ou 'de' quelque chose.",
+      "level":"A2",
+      "topic":"prépositions"
+   },
+   {
+      "id":94,
+      "question":"Ce sont des fleurs ___ j'aime beaucoup l'odeur.",
+      "options":[
+         "dont",
+         "que",
+         "qui",
+         "desquelles"
+      ],
+      "correct_answer":"A",
+      "explanation":"'Dont' remplace le complément de nom (l'odeur de ces fleurs).",
+      "level":"B1",
+      "topic":"pronoms relatifs"
+   },
+   {
+      "id":95,
+      "question":"Si j'avais eu ton numéro, je t'___ .",
+      "options":[
+         "aurais appelé",
+         "appellerais",
+         "avais appelé",
+         "appellerai"
+      ],
+      "correct_answer":"A",
+      "explanation":"Conditionnel passé pour un fait non réalisé dans le passé (Si + plus-que-parfait).",
+      "level":"B2",
+      "topic":"conditionnel"
+   },
+   {
+      "id":96,
+      "question":"J'espère que vous ___ passer un bon moment.",
+      "options":[
+         "allez",
+         "alliez",
+         "alliez",
+         "allassiez"
+      ],
+      "correct_answer":"A",
+      "explanation":"Le verbe 'espérer que' est suivi de l'indicatif (futur ou présent).",
+      "level":"B1",
+      "topic":"indicatif"
+   },
+   {
+      "id":97,
+      "question":"Il ne pleut pas. Tu ___ donc pas prendre ton parapluie.",
+      "options":[
+         "ne devrais",
+         "ne dois",
+         "ne devras",
+         "ne doives"
+      ],
+      "correct_answer":"A",
+      "explanation":"Le conditionnel 'ne devrais pas' exprime ici un conseil ou une suggestion.",
+      "level":"B1",
+      "topic":"conditionnel"
+   },
+   {
+      "id":98,
+      "question":"C'est la raison ___ il ne veut pas venir.",
+      "options":[
+         "pour laquelle",
+         "pour quoi",
+         "dont",
+         "laquelle"
+      ],
+      "correct_answer":"A",
+      "explanation":"On utilise le pronom relatif composé 'pour laquelle' avec le nom 'raison'.",
+      "level":"B2",
+      "topic":"pronoms relatifs"
+   },
+   {
+      "id":99,
+      "question":"Il fait de son ___ pour réussir.",
+      "options":[
+         "mieux",
+         "meilleur",
+         "bien",
+         "bon"
+      ],
+      "correct_answer":"A",
+      "explanation":"L'expression 'faire de son mieux' signifie faire tout son possible.",
+      "level":"A2",
+      "topic":"idiomes"
+   },
+   {
+      "id":100,
+      "question":"Je préférerais que tu ne ___ pas ça maintenant.",
+      "options":[
+         "fasses",
+         "fais",
+         "feras",
+         "faisais"
+      ],
+      "correct_answer":"A",
+      "explanation":"Le verbe 'préférer que' demande le subjonctif.",
+      "level":"B1",
+      "topic":"subjonctif"
+   }
+]
