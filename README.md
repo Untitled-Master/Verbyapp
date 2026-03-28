@@ -28,21 +28,53 @@ Master French verbs through play.
 
 ---
 
+## Prerequisites
+
+- Node.js 18+
+- A Firebase project with:
+  - **Authentication** - Enable Google sign-in provider
+  - **Realtime Database** - Create a database
+
+---
+
 ## Getting Started
 
-### Prerequisites
-
-- Node.js 18+ and npm
-
-### Installation
+### 1. Clone the Repository
 
 ```sh
 git clone https://github.com/Untitled-Master/Verbyapp.git
 cd Verbyapp
+```
+
+### 2. Set Up Firebase
+
+Create a `.env` file in the root directory with your Firebase configuration:
+
+```env
+VITE_FIREBASE_API_KEY=your_api_key
+VITE_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
+VITE_FIREBASE_DATABASE_URL=https://your_project-default-rtdb.firebaseio.com
+VITE_FIREBASE_PROJECT_ID=your_project_id
+VITE_FIREBASE_STORAGE_BUCKET=your_project.appspot.com
+VITE_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+VITE_FIREBASE_APP_ID=your_app_id
+```
+
+To get these values:
+1. Go to [Firebase Console](https://console.firebase.google.com/)
+2. Create a new project (or use existing)
+3. Add a Web app in Project Settings
+4. Copy the config values
+5. Enable **Google** sign-in in Authentication > Sign-in method
+6. Create a **Realtime Database** and set rules to allow authenticated read/write
+
+### 3. Install Dependencies
+
+```sh
 npm install
 ```
 
-### Development
+### 4. Run Development Server
 
 ```sh
 npm run dev
@@ -50,7 +82,7 @@ npm run dev
 
 Open [http://localhost:5173](http://localhost:5173) in your browser.
 
-### Build
+### 5. Build for Production
 
 ```sh
 npm run build
@@ -62,7 +94,39 @@ Preview the production build:
 npm run preview
 ```
 
-### Linting
+---
+
+## Firebase Database Structure
+
+The app uses Firebase Realtime Database with the following structure:
+
+```
+users/
+  {uid}/
+    profile/        # User profile data
+    stats/          # Game statistics (blitz, streak, zen)
+    gameHistory/    # History of played games
+    ratingHistory/  # Daily rating snapshots
+```
+
+### Database Rules (for development)
+
+```json
+{
+  "rules": {
+    "users": {
+      "$uid": {
+        ".read": "auth != null",
+        ".write": "auth != null"
+      }
+    }
+  }
+}
+```
+
+---
+
+## Linting
 
 ```sh
 npm run lint
@@ -77,15 +141,15 @@ src/
 ├── pages/
 │   ├── arena/           # Game modes (Blitz, VerbyStreak, ZenMode)
 │   ├── community/       # Leaderboards
-│   ├── profile/        # User profiles
-│   ├── tools/          # Verb search tools
-│   └── admin/          # Admin dashboard
+│   ├── profile/         # User profiles
+│   ├── tools/           # Verb search tools
+│   └── admin/           # Admin dashboard
 ├── components/
-│   └── MainNavbar.jsx  # Main navigation
+│   └── MainNavbar.jsx   # Main navigation
 ├── context/
 │   └── AuthContext.jsx # Firebase authentication
 └── lib/
-    └── firebase.js     # Firebase configuration
+    └── firebase.js      # Firebase configuration
 ```
 
 ---
@@ -125,9 +189,14 @@ Contributions are welcome! Here's how you can help:
 - Run `npm run lint` before committing
 - Write meaningful commit messages
 
-### API
+---
 
-Verby uses the [VerbyBack API](https://github.com/Untitled-Master/verby-back) for verb conjugations.
+## External APIs
+
+Verby uses the [VerbyBack API](https://github.com/Untitled-Master/verby-back) for:
+- Random verb generation
+- Verb conjugation lookup
+- Verb search/autocomplete
 
 ---
 
